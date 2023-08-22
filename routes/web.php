@@ -1,5 +1,6 @@
 <?php
 
+use App\Enum\EmailStatusEnum;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -23,6 +24,10 @@ Route::get('/', function () {
         // 'laravelVersion' => Application::VERSION,
         // 'phpVersion' => PHP_VERSION,
     ]);
+});
+
+Route::get("/a", function(){
+    dd(EmailStatusEnum::cases());
 });
 
 require __DIR__.'/auth.php';
