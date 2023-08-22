@@ -1,0 +1,1 @@
+sass ./resources/nocompiled/sass/style.scss ./resources/css/styles.module.css --watch

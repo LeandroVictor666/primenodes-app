@@ -1,0 +1,17 @@
+.itemsContainer{
+    display: flex;
+    margin-top: 4%;
+    margin-left: 50%;
+    transform: translate(-50%);
+    background-color: rgb(73, 73, 73);
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 12px;
+    width: 65%;
+    height: 33rem;
+    max-height: 33rem;
+    max-width: 65%;
+    overflow-y: auto;
+    flex-wrap: wrap;
+
+}
+

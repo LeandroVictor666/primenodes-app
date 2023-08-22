@@ -1,0 +1,30 @@
+* {
+    color: #ffff;
+    transition: 0.5s;
+}
+
+body{
+    background-color: #313131;
+}
+
+p{
+    font-family: 'Inter', sans-serif;
+}
+
+
+
+.verticalLine{
+    border-width: 0.2px;
+    border-color: rgb(39, 0, 116);
+    width: 0.1px !important;
+    height: 2.3em;
+    margin-right: .9em;
+}
+
+.horizontalLine{
+    border-width: 0.2px;
+    border-color: rgb(39, 0, 116);
+    width: 60% !important;
+    height: 0.1px;
+    margin-right: .9em;
+}
