@@ -25,9 +25,4 @@ Route::get('/', function () {
         // 'phpVersion' => PHP_VERSION,
     ]);
 });
-
-Route::get("/a", function(){
-    dd(EmailStatusEnum::cases());
-});
-
 require __DIR__.'/auth.php';
