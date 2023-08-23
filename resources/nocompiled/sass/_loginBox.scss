@@ -1,0 +1,22 @@
+.LoginFormDiv {
+    padding: 30px;
+    margin-top: 8%;
+    width: 35%;
+    height: 255px;
+    margin-left: 50%;
+    transform: translate(-50%);
+    background-color: #232323;
+    border: 1px solid #4e4e4e;
+    border-radius: 7px;
+    .Header {
+        margin-bottom: 25px;
+        display: flex;
+        height: 2em;
+        justify-content: center;
+        align-items: center;
+        p {
+            cursor: default;
+            font-size: 24px;
+        }
+    }
+}
