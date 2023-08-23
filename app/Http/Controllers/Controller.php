@@ -21,7 +21,14 @@ class Controller extends BaseController
         $this->propBase = array(
             'Route' => $Route
         );
+    }
 
+    protected function apiResponse(array $content,int $code = 200) :void
+    {
+        header("Content-Type: application/json");
+        http_response_code($code);
+        echo json_encode($content);
+        return;
     }
 
     use AuthorizesRequests, ValidatesRequests;

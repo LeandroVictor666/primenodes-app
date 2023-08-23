@@ -1,7 +1,7 @@
 .RegisterBoxContainer {
     background-color: $formBoxColor;
     width: 54%;
-    height: 480px;
+    height: 525px;
     margin-left: 50%;
     margin-top: 3.4em;
     transform: translate(-50%);
@@ -38,7 +38,10 @@
         border-radius: 6px;
         border: 1px solid rgb(87, 87, 87);
         transform: translate(-50%);
-
+        p{
+            margin-left: 33%;
+            margin-bottom: 3%;
+        }
 
     }
 }

@@ -18,7 +18,7 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', [MainPageController::class, 'render']);
-Route::get('/Register', [RegisterController::class, 'render']);
-Route::get('/Login', [LoginController::class, 'render']);
+Route::get('/', [MainPageController::class, 'render'])->name('main');
+Route::get('/Register', [RegisterController::class, 'render'])->name('register');
+Route::get('/Login', [LoginController::class, 'render'])->name('login');
 require __DIR__.'/auth.php';

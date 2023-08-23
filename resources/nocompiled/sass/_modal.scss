@@ -1,0 +1,65 @@
+$alertColor: rgb(237, 241, 0);
+$successColor: rgba(44, 214, 35, 0.897);
+$failureColor: rgba(216, 10, 10, 0.897);
+
+.ModalMain {
+    width: 40%;
+    height: 380px;
+    margin-top: 10%;
+    margin-left: 50%;
+    transform: translate(-50%);
+    border: 1px solid rgb(150, 150, 150);
+    border-radius: 6px;
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    z-index: 9999;
+    header {
+        border-radius: 4.7px;
+        justify-content: center;
+        align-items: center;
+        p {
+            font-size: 24px;
+        }
+    }
+    .ModalBody {
+        display: flex;
+        height: 70%;
+        justify-content: center;
+        flex-wrap: wrap;
+        p {
+            color: black;
+            font-size: 18px;
+        }
+        .ModalResponse {
+            p {
+                font-size: 21px;
+            }
+        }
+        .ModalNotification {
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            border: 1px solid rgb(45, 45, 45);
+
+            border-radius: 4px;
+            width: 100%;
+            height: 35px;
+            p {
+                color: white;
+                font-size: 22px;
+            }
+        }
+        .ModalSuccess {
+            background-color: $successColor;
+            box-shadow: 0px 3px 18px rgba(44, 214, 35, 0.897);
+        }
+        .ModalFailure {
+            background-color: $failureColor;
+            box-shadow: 0px 3px 18px $failureColor;
+        }
+        .ModalAlert {
+            background-color: $alertColor;
+            box-shadow: 0px 3px 18px $alertColor;
+        }
+    }
+}

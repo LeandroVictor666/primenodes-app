@@ -82,8 +82,9 @@ header .middleSection .icons {
 }
 header .middleSection .icons:hover {
   margin-left: 0.8em;
-  font-size: 2.8em;
-  fill: #b0b0b0;
+  font-size: 2.89em;
+  fill: rgba(176, 176, 176, 0.6431372549);
+  cursor: pointer;
 }
 header .finalSection {
   display: flex;
@@ -242,7 +243,7 @@ input[type=submit]:active {
 .RegisterBoxContainer {
   background-color: #3c3c3c;
   width: 54%;
-  height: 480px;
+  height: 525px;
   margin-left: 50%;
   margin-top: 3.4em;
   transform: translate(-50%);
@@ -277,6 +278,10 @@ input[type=submit]:active {
   border: 1px solid rgb(87, 87, 87);
   transform: translate(-50%);
 }
+.RegisterBoxContainer .formContainer p {
+  margin-left: 33%;
+  margin-bottom: 3%;
+}
 
 .LoginFormDiv {
   padding: 30px;
@@ -299,6 +304,65 @@ input[type=submit]:active {
 .LoginFormDiv .Header p {
   cursor: default;
   font-size: 24px;
+}
+
+.ModalMain {
+  width: 40%;
+  height: 380px;
+  margin-top: 10%;
+  margin-left: 50%;
+  transform: translate(-50%);
+  border: 1px solid rgb(150, 150, 150);
+  border-radius: 6px;
+  background-color: rgb(255, 255, 255);
+  position: absolute;
+  z-index: 9999;
+}
+.ModalMain header {
+  border-radius: 4.7px;
+  justify-content: center;
+  align-items: center;
+}
+.ModalMain header p {
+  font-size: 24px;
+}
+.ModalMain .ModalBody {
+  display: flex;
+  height: 70%;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.ModalMain .ModalBody p {
+  color: black;
+  font-size: 18px;
+}
+.ModalMain .ModalBody .ModalResponse p {
+  font-size: 21px;
+}
+.ModalMain .ModalBody .ModalNotification {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  border: 1px solid rgb(45, 45, 45);
+  border-radius: 4px;
+  width: 100%;
+  height: 35px;
+}
+.ModalMain .ModalBody .ModalNotification p {
+  color: white;
+  font-size: 22px;
+}
+.ModalMain .ModalBody .ModalSuccess {
+  background-color: rgba(44, 214, 35, 0.897);
+  box-shadow: 0px 3px 18px rgba(44, 214, 35, 0.897);
+}
+.ModalMain .ModalBody .ModalFailure {
+  background-color: rgba(216, 10, 10, 0.897);
+  box-shadow: 0px 3px 18px rgba(216, 10, 10, 0.897);
+}
+.ModalMain .ModalBody .ModalAlert {
+  background-color: rgb(237, 241, 0);
+  box-shadow: 0px 3px 18px rgb(237, 241, 0);
 }
 
 /*# sourceMappingURL=styles.module.css.map */
