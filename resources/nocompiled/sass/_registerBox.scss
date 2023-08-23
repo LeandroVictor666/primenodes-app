@@ -1,0 +1,44 @@
+.RegisterBoxContainer {
+    background-color: $formBoxColor;
+    width: 54%;
+    height: 480px;
+    margin-left: 50%;
+    margin-top: 3.4em;
+    transform: translate(-50%);
+    border: 1px solid rgb(112, 112, 112);
+    border-radius: 6px;
+
+    .Header {
+        background-color: rgb(32, 32, 32);
+        border: 1px solid #575757;
+        border-radius: 7px;
+        display: flex;
+        align-items: center;
+        height: 3.6em;
+        justify-content: center;
+
+        p {
+            font-size: 28px;
+            cursor: default;
+        }
+    }
+
+    .Header:hover {
+        background-color: rgb(37, 37, 37);
+    }
+
+    .formContainer {
+        background-color: rgb(37, 37, 37);
+        display: block;
+        justify-content: center;
+        width: 70%;
+        margin-left: 50%;
+        margin-top: 1.5%;
+        padding: 30px;
+        border-radius: 6px;
+        border: 1px solid rgb(87, 87, 87);
+        transform: translate(-50%);
+
+
+    }
+}

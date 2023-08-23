@@ -1,9 +1,8 @@
-@use "sass:math";
-@import 'reset.scss';
-@import 'variables.scss';
-@import 'fonts.scss';
-@import 'header.scss';
-@import 'globals.scss';
-@import 'itemsContainer.scss';
-@import 'itemCard.scss';
-
+@import "reset.scss";
+@import "variables.scss";
+@import "fonts.scss";
+@import "header.scss";
+@import "globals.scss";
+@import "itemsContainer.scss";
+@import "itemCard.scss";
+@import "_registerBox.scss";

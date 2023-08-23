@@ -3,28 +3,60 @@
     transition: 0.5s;
 }
 
-body{
+body {
     background-color: #313131;
 }
 
-p{
-    font-family: 'Inter', sans-serif;
+p {
+    font-family: "Inter", sans-serif;
 }
 
-
-
-.verticalLine{
+.verticalLine {
     border-width: 0.2px;
     border-color: rgb(39, 0, 116);
     width: 0.1px !important;
     height: 2.3em;
-    margin-right: .9em;
+    margin-right: 0.9em;
 }
 
-.horizontalLine{
+.horizontalLine {
     border-width: 0.2px;
     border-color: rgb(39, 0, 116);
     width: 60% !important;
     height: 0.1px;
-    margin-right: .9em;
+    margin-right: 0.9em;
+}
+
+input {
+    display: block;
+}
+
+input[type="text"][type="password"] {
+    background-color: red;
+}
+
+
+input {
+    color: black;
+    width: 80%;
+    height: 2.3em;
+    margin-bottom: 20px;
+    margin-left: 50%;
+    transform: translate(-50%);
+}
+
+input[type="submit"] {
+    height: 2.5em;
+    width: 50%;
+    border: 1.4px solid rgb(122, 122, 122);
+}
+
+input:hover {
+    cursor: pointer;
+    background-color: #c9c9c9;
+}
+
+input[type="submit"]:active {
+    background-color: rgb(43, 43, 43);
+    color: white;
 }

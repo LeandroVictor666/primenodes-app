@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@100&family=Inter:wght@200&display=swap");
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -47,12 +48,164 @@ table {
   border-spacing: 0;
 }
 
+header {
+  display: flex;
+  width: 100%;
+  height: 4.4rem;
+  background-color: rgb(21, 21, 21);
+}
+header .firstSection {
+  display: flex;
+  width: 12em;
+  padding-left: 5px;
+  padding-top: 20px;
+}
+header .firstSection p {
+  height: 1.1em;
+}
+header .firstSection p:hover {
+  cursor: pointer;
+  color: #cbcbcb;
+}
+header .middleSection {
+  margin-left: 36%;
+  transform: translate(-50%);
+  padding-top: 0.6em;
+  justify-content: center;
+  align-items: center;
+  width: 15em;
+}
+header .middleSection .icons {
+  transition: 0.2s;
+  margin-left: 0.8em;
+  font-size: 2.8em;
+}
+header .middleSection .icons:hover {
+  margin-left: 0.8em;
+  font-size: 2.8em;
+  fill: #b0b0b0;
+}
+header .finalSection {
+  display: flex;
+  margin-left: 21%;
+  width: 9em;
+  align-items: center;
+  justify-content: flex-end;
+}
+header .finalSection p {
+  border: 1px solid white;
+  border-radius: 7px;
+  margin-right: 15px;
+  padding: 8px;
+}
+header .finalSection p:hover {
+  border-color: rgba(153, 153, 153, 0.6);
+  cursor: pointer;
+}
+
+* {
+  color: white;
+  transition: 0.5s;
+}
+
 body {
-  color: #c6538c;
+  background-color: #313131;
 }
 
 p {
-  background-color: #c6538c;
+  font-family: "Inter", sans-serif;
+}
+
+.verticalLine {
+  border-width: 0.2px;
+  border-color: rgb(39, 0, 116);
+  width: 0.1px !important;
+  height: 2.3em;
+  margin-right: 0.9em;
+}
+
+.horizontalLine {
+  border-width: 0.2px;
+  border-color: rgb(39, 0, 116);
+  width: 60% !important;
+  height: 0.1px;
+  margin-right: 0.9em;
+}
+
+.itemsContainer {
+  display: flex;
+  margin-top: 4%;
+  margin-left: 50%;
+  transform: translate(-50%);
+  background-color: rgb(73, 73, 73);
+  border: 1px solid rgb(255, 255, 255);
+  border-radius: 12px;
+  width: 65%;
+  height: 33rem;
+  max-height: 33rem;
+  max-width: 65%;
+  overflow-y: auto;
+  flex-wrap: wrap;
+}
+
+.productImage {
+  width: 120px !important;
+  border: 2px solid rgb(170, 0, 255);
+  border-radius: 45%;
+  float: left;
+  margin-right: 10px;
+}
+
+.productImage:hover {
+  width: 125px;
+  cursor: pointer;
+}
+
+.itemCard {
+  background-color: rgb(56, 56, 56);
+  border: 1px solid black;
+  border-radius: 12px;
+  width: 25.6rem;
+  height: 65%;
+  margin-top: 1.6%;
+  margin-left: 3%;
+}
+.itemCard p:hover {
+  cursor: pointer;
+}
+.itemCard .itemCardHeader {
+  padding-top: 10px;
+  padding-left: 7px;
+  width: 100%;
+  height: 40%;
+}
+.itemCard .horizontalLine {
+  margin-top: 10%;
+  border-color: rgb(77, 0, 118);
+}
+.itemCard .itemCardInformationContainer {
+  display: block;
+  padding-left: 5px;
+}
+.itemCard .itemCardInformationContainer p {
+  line-height: 17px;
+  font-size: 14px;
+  margin-top: 5px;
+}
+.itemCard .itemCardInformationContainer p :hover {
+  font-size: 15px;
+}
+.itemCard .itemCardInformationContainer strong {
+  font-size: 16px;
+  line-height: 9px;
+  color: #ddabff;
+}
+.itemCard .itemCardInformationContainer strong :hover {
+  font-size: 16px;
+}
+
+.itemCard:hover {
+  background-color: rgb(77, 53, 79);
 }
 
 /*# sourceMappingURL=style.css.map */

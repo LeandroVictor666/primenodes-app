@@ -132,6 +132,39 @@ p {
   margin-right: 0.9em;
 }
 
+input {
+  display: block;
+}
+
+input[type=text][type=password] {
+  background-color: red;
+}
+
+input {
+  color: black;
+  width: 80%;
+  height: 2.3em;
+  margin-bottom: 20px;
+  margin-left: 50%;
+  transform: translate(-50%);
+}
+
+input[type=submit] {
+  height: 2.5em;
+  width: 50%;
+  border: 1.4px solid rgb(122, 122, 122);
+}
+
+input:hover {
+  cursor: pointer;
+  background-color: #c9c9c9;
+}
+
+input[type=submit]:active {
+  background-color: rgb(43, 43, 43);
+  color: white;
+}
+
 .itemsContainer {
   display: flex;
   margin-top: 4%;
@@ -204,6 +237,45 @@ p {
 
 .itemCard:hover {
   background-color: rgb(77, 53, 79);
+}
+
+.RegisterBoxContainer {
+  background-color: #3c3c3c;
+  width: 54%;
+  height: 480px;
+  margin-left: 50%;
+  margin-top: 3.4em;
+  transform: translate(-50%);
+  border: 1px solid rgb(112, 112, 112);
+  border-radius: 6px;
+}
+.RegisterBoxContainer .Header {
+  background-color: rgb(32, 32, 32);
+  border: 1px solid #575757;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  height: 3.6em;
+  justify-content: center;
+}
+.RegisterBoxContainer .Header p {
+  font-size: 28px;
+  cursor: default;
+}
+.RegisterBoxContainer .Header:hover {
+  background-color: rgb(37, 37, 37);
+}
+.RegisterBoxContainer .formContainer {
+  background-color: rgb(37, 37, 37);
+  display: block;
+  justify-content: center;
+  width: 70%;
+  margin-left: 50%;
+  margin-top: 1.5%;
+  padding: 30px;
+  border-radius: 6px;
+  border: 1px solid rgb(87, 87, 87);
+  transform: translate(-50%);
 }
 
 /*# sourceMappingURL=styles.module.css.map */

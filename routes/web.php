@@ -1,7 +1,8 @@
 <?php
 
-use App\Enum\EmailStatusEnum;
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\MainPageController;
+use App\Http\Controllers\RegisterController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -17,12 +18,7 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('HomePage', [
-        // 'canLogin' => Route::has('login'),
-        // 'canRegister' => Route::has('register'),
-        // 'laravelVersion' => Application::VERSION,
-        // 'phpVersion' => PHP_VERSION,
-    ]);
-});
+Route::get('/', [MainPageController::class, 'render']);
+Route::get('/Register', [RegisterController::class, 'render']);
+Route::get('/Login', [LoginController::class, 'render']);
 require __DIR__.'/auth.php';

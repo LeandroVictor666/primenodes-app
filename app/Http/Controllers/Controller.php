@@ -8,5 +8,21 @@ use Illuminate\Routing\Controller as BaseController;
 
 class Controller extends BaseController
 {
+    /**
+     * Array with props.
+     */
+    protected $propBase;
+    
+    /**
+     * Apply common props.
+     */
+    protected function definePropBase(string $Route = '/') :void
+    {
+        $this->propBase = array(
+            'Route' => $Route
+        );
+
+    }
+
     use AuthorizesRequests, ValidatesRequests;
 }

@@ -18,17 +18,15 @@ export enum ProductState
     New = 'New',
     Used = 'Used'
 }
-
-
-
-export class Product
+export interface Product
 {
-    Name:string;
-    Description:string;
-    Category:ProductCategory;
-    State:ProductState;
-    VendorName:string;
-    Price:string;
-    SellDate:Date;
+    id:BigInteger;
+    name:string;
+    description:string;
+    category:ProductCategory;
+    state:ProductState;
+    vendor_name:string;
+    price:string;
+    release_date:Date;
 
 }    
