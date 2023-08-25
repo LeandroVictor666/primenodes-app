@@ -62,4 +62,21 @@ export default class CacheController implements ICache {
             }
         }
     }
+
+    searchForCache(nameToSearch:string) :string | null
+    {
+        var cache:any;
+
+        cache = localStorage.getItem(nameToSearch);
+        if (cache !== null){
+            return cache;
+        }
+        cache = sessionStorage.getItem(nameToSearch);
+        if (cache !== null){
+            return cache;
+        }
+        return null;
+
+    }
+
 }

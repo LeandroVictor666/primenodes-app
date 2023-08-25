@@ -1,9 +1,7 @@
 //#region Imports
 import Styles from "../../../css/styles.module.css";
 import { Dispatch, SetStateAction, useState } from "react";
-import { ServerResponse } from "@/types/serverresponse";
 import CacheController from "@/Controllers/Cache/CacheController";
-import { cacheElements } from "@/Interface/CacheInterface/ICacheInterface";
 import { StorageTypes } from "@/Enums/StorageTypes/StorageTypes";
 import * as React from "react";
 import HttpPostRequest from "@/Controllers/HttpClient/HttpPostClient";
@@ -67,7 +65,7 @@ export default function LoginFormUI({ renderModal }: { renderModal: Dispatch<Set
             cacheName: 'AuthenticationToken',
             cacheValue: serverResponse?.token,
             storageType: StorageTypes.localStorage
-        }
+        };
         if (!cacheController.saveCache(cacheConfiguration)) {
             renderModal({ isActive: true, title: 'title', content: "Failed To Save Authentication Session.", modalType: 'failure' });
         };

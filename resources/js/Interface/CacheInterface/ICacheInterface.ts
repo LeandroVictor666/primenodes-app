@@ -8,4 +8,5 @@ export type cacheElements = {
 export interface ICache {
     saveCache(configurations: cacheElements): boolean;
     removeCache(configurations: cacheElements): boolean;
+    searchForCache(nameToSearch:string) :string | null;
 }
