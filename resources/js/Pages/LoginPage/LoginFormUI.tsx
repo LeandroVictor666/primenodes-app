@@ -61,10 +61,17 @@ export default function LoginFormUI({ renderModal }: { renderModal: Dispatch<Set
             return;
         }
 
+        var bruteCacheValue = {
+            full_name: serverResponse.full_name,
+            email: serverResponse.email,
+            token: serverResponse.token
+        }
+
+        var cacheValue: string = JSON.stringify(bruteCacheValue);
         var cacheController = new CacheController();
         const cacheConfiguration = {
             cacheName: AUTHENTICATION_CACHE_NAME,
-            cacheValue: serverResponse?.token,
+            cacheValue: cacheValue,
             storageType: StorageTypes.localStorage
         };
         if (!cacheController.saveCache(cacheConfiguration)) {

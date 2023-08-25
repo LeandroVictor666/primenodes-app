@@ -1,5 +1,7 @@
 type LoginModel = {
     response: string;
     isError: string;
-    token:string;
+    full_name: string;
+    email: string;
+    token: string;
 };

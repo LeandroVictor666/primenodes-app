@@ -1,7 +1,7 @@
 import { StorageTypes } from "@/Enums/StorageTypes/StorageTypes";
 export type cacheElements = {
     cacheName: string;
-    cacheValue: string;
+    cacheValue: any;
     storageType: StorageTypes;
 };
 
