@@ -6,6 +6,7 @@ import { StorageTypes } from "@/Enums/StorageTypes/StorageTypes";
 import * as React from "react";
 import HttpPostRequest from "@/Controllers/HttpClient/HttpPostClient";
 import { HttpPostRequestType } from "@/types/HttpPostRequestType/HttpPostRequestType";
+import { AUTHENTICATION_CACHE_NAME } from "@/_GLOBALS/_GLOBALS";
 //#endregion
 
 
@@ -62,7 +63,7 @@ export default function LoginFormUI({ renderModal }: { renderModal: Dispatch<Set
 
         var cacheController = new CacheController();
         const cacheConfiguration = {
-            cacheName: 'AuthenticationToken',
+            cacheName: AUTHENTICATION_CACHE_NAME,
             cacheValue: serverResponse?.token,
             storageType: StorageTypes.localStorage
         };

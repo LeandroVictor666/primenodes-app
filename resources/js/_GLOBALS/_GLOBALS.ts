@@ -1,0 +1,1 @@
+export const AUTHENTICATION_CACHE_NAME = "Authentication";

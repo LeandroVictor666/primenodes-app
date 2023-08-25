@@ -1,6 +1,5 @@
 export type AccountData = {
-    token:string;
-    full_name:string;
-    email:string;
-    authentication:string
+    token:string | undefined;
+    full_name:string | undefined;
+    email:string | undefined;
 };
