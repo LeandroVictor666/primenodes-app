@@ -23,7 +23,7 @@ Route::get('/', [MainPageController::class, 'render'])->name('main');
 Route::get('/Register', [RegisterController::class, 'render'])->name('register');
 Route::get('/Login', [LoginController::class, 'render'])->name('login');
 
-Route::post("/testApplication", function () {
+Route::get("/testApplication", function () {
     $inJs = json_encode(['fuckfuck' => 'yeafuckthepolice']);
     echo $inJs;
     exit();

@@ -3,11 +3,15 @@ import Styles from "../../../css/styles.module.css";
 import { Dispatch, SetStateAction, useState } from "react";
 import { ServerResponse } from "@/types/serverresponse";
 import CacheController from "@/Controllers/Cache/CacheController";
-import { cacheElements } from "@/Interface/CacheInterface/CacheInterface";
+import { cacheElements } from "@/Interface/CacheInterface/ICacheInterface";
 import { StorageTypes } from "@/Enums/StorageTypes/StorageTypes";
+import * as React from "react";
+import HttpPostRequest from "@/Controllers/HttpClient/HttpPostClient";
+import { HttpPostRequestType } from "@/types/HttpPostRequestType/HttpPostRequestType";
 //#endregion
-export default function LoginFormUI({ renderModal }: { renderModal: Dispatch<SetStateAction<{ isActive: boolean; title: string; content: string; modalType: string }>> }) {
 
+
+export default function LoginFormUI({ renderModal }: { renderModal: Dispatch<SetStateAction<{ isActive: boolean; title: string; content: string; modalType: string }>> }) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     function validateInput(input: string, min: number, max: number): boolean {
@@ -31,58 +35,53 @@ export default function LoginFormUI({ renderModal }: { renderModal: Dispatch<Set
         postData.append("username", username);
         postData.append("password", password);
         postData.append("device_name", deviceName);
-
-        const configurations = {
-            method: 'POST',
-            header: { 'Content-Type': 'application/json' },
+        var HttpPostClient = new HttpPostRequest();
+        var configurations: HttpPostRequestType = {
+            url: '/api/login',
+            header: {
+                "Content-Type": "application/json"
+            },
             body: postData
         };
-        var serverResponse: ServerResponse | undefined;
-        await fetch("/api/login", configurations)
-            .then(r => { return r.json() })
-            .then(responseJson => {
-                serverResponse = responseJson
+        var serverResponse: LoginModel | undefined;
+        await HttpPostClient.fetchPost(configurations)
+            .then(r => {
+                serverResponse = r;
             })
             .catch(error => {
-                renderModal({ isActive: true, title: 'title', content: 'content', modalType: 'failure' });
+                renderModal({ isActive: true, title: "API Connection Error", content: "API Connection error, wait some minutes and try again.", modalType: "failure" })
                 return;
             });
 
         if (serverResponse === undefined) {
+            renderModal({ isActive: true, title: "API Connection Error", content: "API Connection error, wait some minutes and try again.", modalType: "failure" })
             return;
         }
-
         if (serverResponse?.isError == 'true') {
             renderModal({ isActive: true, title: 'title', content: serverResponse.response, modalType: 'failure' });
             return;
         }
+
         var cacheController = new CacheController();
-        const cacheEls = {
+        const cacheConfiguration = {
             cacheName: 'AuthenticationToken',
-            cacheValue: serverResponse.token,
+            cacheValue: serverResponse?.token,
             storageType: StorageTypes.localStorage
         }
-
-        if (!cacheController.saveCache(cacheEls)) {
+        if (!cacheController.saveCache(cacheConfiguration)) {
             renderModal({ isActive: true, title: 'title', content: "Failed To Save Authentication Session.", modalType: 'failure' });
         };
-
-        renderModal({ isActive: true, title: 'title', content: serverResponse?.response, modalType: 'success' });
-        
+        renderModal({ isActive: true, title: 'Login Sucessfull', content: serverResponse?.response, modalType: 'success' });
         setTimeout(() => {
             window.location.href = "/";
             return;
         }, 5400);
     }
-
-
     return (
         <form className={Styles.LoginFormDiv} method="POST">
             <div className={Styles.Header}>
                 <p>Authenticate</p>
-
             </div>
-
             <input type="text" placeholder="Username../" onChange={(e) => { setUsername(e.target.value) }} value={username}></input>
             <input type="password" placeholder="Password../" onChange={(e) => { setPassword(e.target.value) }} value={password}></input>
             <input type="submit" onClick={(e) => { loginFireEvent(e) }} name="login" value={'Login'}></input>

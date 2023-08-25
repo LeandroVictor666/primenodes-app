@@ -1,7 +1,7 @@
 import {
     ICache,
     cacheElements,
-} from "@/Interface/CacheInterface/CacheInterface";
+} from "@/Interface/CacheInterface/ICacheInterface";
 import { StorageTypes } from "@/Enums/StorageTypes/StorageTypes";
 export default class CacheController implements ICache {
     saveCache(configurations: cacheElements): boolean {

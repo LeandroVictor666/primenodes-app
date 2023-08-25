@@ -1,6 +1,9 @@
 import { Dispatch, SetStateAction, useState } from "react";
 import Style from "../../../css/styles.module.css";
 import { ServerResponse } from "@/types/serverresponse";
+import HttpPostRequest from "@/Controllers/HttpClient/HttpPostClient";
+import { HttpPostRequestType } from "@/types/HttpPostRequestType/HttpPostRequestType";
+
 
 export default function RegisterBox({ renderModal }: { renderModal: Dispatch<SetStateAction<{ isActive: boolean; title: string; content: string; modalType: string }>> }) {
 
@@ -26,30 +29,30 @@ export default function RegisterBox({ renderModal }: { renderModal: Dispatch<Set
         bodyData.append("email", email);
         bodyData.append("password", password);
         bodyData.append("date_of_birth", dateOfBirth);
-        const configurations = {
-            method: 'POST',
+
+        var HttpPostClient = new HttpPostRequest();
+        var configurations: HttpPostRequestType = {
+            url: '/api/register',
             header: {
                 "Content-Type": "application/json"
             },
             body: bodyData
         };
-        var serverResponse: ServerResponse | undefined;
-
-        
-
-        await fetch('/api/register', configurations)
+        var serverResponse: RegisterModel | undefined;
+        await HttpPostClient.fetchPost(configurations)
             .then(r => {
-                return r.json();
-            })
-            .then(response => {
-                serverResponse = response;
+                console.log(`r => ${r}`);
+                serverResponse = r;
             })
             .catch(error => {
+                console.log("error catch.");
                 renderModal({ isActive: true, title: "API Connection Error", content: "API Connection error, wait some minutes and try again.", modalType: "failure" })
                 return;
             });
-        if (serverResponse === undefined) {
-            renderModal({ isActive: true, title: "API Connection Error", content: "API Connection error, wait some minutes and try again.", modalType: "failure" })
+
+        if (serverResponse == undefined) {
+            console.log(serverResponse);
+            renderModal({ isActive: true, title: "API Connect3ion Error", content: "API Connection error, wait some minutes and try again.", modalType: "failure" })
             return;
         }
         if (serverResponse.isError == 'true') {
@@ -60,7 +63,6 @@ export default function RegisterBox({ renderModal }: { renderModal: Dispatch<Set
             return;
         }
     }
-
 
     const [username, setUsername] = useState("");
     const [fullName, setFullName] = useState("");

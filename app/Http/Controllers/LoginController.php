@@ -20,7 +20,7 @@ class LoginController extends Controller
         $queryResult = $accountModel->where("username", '=', $request['username'])->first();
 
         if ($queryResult == null) {
-            $serveResponse = $this->apiResponse([
+            $this->apiResponse([
                 'response' => 'Login Failure, invalid credentials',
                 'isError' => 'true',
                 'token' => '0'
@@ -28,7 +28,7 @@ class LoginController extends Controller
             exit();
         }
         if (!password_verify($password, $queryResult['password'])) {
-            $serveResponse = $this->apiResponse([
+            $this->apiResponse([
                 'response' => 'Login Failure, invalid credentials',
                 'isError' => 'true',
                 'token' => '0'

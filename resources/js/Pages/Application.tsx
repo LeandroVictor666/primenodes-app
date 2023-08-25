@@ -7,16 +7,10 @@ import RegisterUI from "./RegisterPage/RegisterUI";
 import Header from "@/Components/Header/Header";
 import LoginUI from "./LoginPage/LoginUI";
 import ModalUI from "@/Components/ModalUI/ModalUI";
-import {useEffect} from "react";
+
 export default function App({ propBase }: { propBase: PropBase }) {
-    useEffect(()=> {
-        console.log("opa");
-    }, []);
-    
-
-
-    
     const [modalinterface, setModalState] = React.useState({ isActive: false, title: '', content: '', modalType: '' });
+
     return (
         <React.StrictMode>
             <Header />
