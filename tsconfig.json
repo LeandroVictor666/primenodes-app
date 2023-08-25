@@ -14,5 +14,5 @@
             "@/*": ["./resources/js/*"]
         }
     },
-    "include": ["resources/js/**/*.ts", "resources/js/**/*.tsx", "resources/js/**/*.d.ts", "resources/js/Pages/HomePage/RenderProducts.jsx", "resources/js/Pages/HomePage/ProductCard.tsx"]
+    "include": ["resources/js/**/*.ts", "resources/js/**/*.tsx", "resources/js/**/*.d.ts", "resources/js/Pages/HomePage/RenderProducts.jsx", "resources/js/Pages/HomePage/ProductCard.tsx", "resources/js/Context/AuthenticationContext.tsx"]
 }

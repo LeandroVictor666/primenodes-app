@@ -3,6 +3,7 @@
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MainPageController;
 use App\Http\Controllers\RegisterController;
+use App\Models\Account;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -21,4 +22,12 @@ use Inertia\Inertia;
 Route::get('/', [MainPageController::class, 'render'])->name('main');
 Route::get('/Register', [RegisterController::class, 'render'])->name('register');
 Route::get('/Login', [LoginController::class, 'render'])->name('login');
-require __DIR__.'/auth.php';
+
+Route::post("/testApplication", function () {
+    $inJs = json_encode(['fuckfuck' => 'yeafuckthepolice']);
+    echo $inJs;
+    exit();
+});
+
+
+require __DIR__ . '/auth.php';

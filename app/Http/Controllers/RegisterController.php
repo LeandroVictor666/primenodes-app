@@ -1,6 +1,6 @@
 <?php
-
 namespace App\Http\Controllers;
+
 
 use App\Http\Requests\RegisterAccountRequest;
 use App\Models\Account;
@@ -15,12 +15,10 @@ class RegisterController extends Controller
     {
         return;
     }
-
     public function delete(Request $request)
     {
         return;
     }
-
     public function render()
     {
         $this->definePropBase('/Register');
@@ -28,10 +26,8 @@ class RegisterController extends Controller
             'propBase' => $this->propBase,
         ]);
     }
-
-
     public function registerEvent(RegisterAccountRequest $request, Account $accountModel)
-    {
+    {        
         try {
             $dataRequest = $request->all();
             $password = $dataRequest['password'];

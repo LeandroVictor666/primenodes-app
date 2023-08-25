@@ -22,4 +22,10 @@ class MainPageController extends Controller
         $products = $productModel->take(75)->get();
         return $products;
     }
+    public function testApp()
+    {
+        $this->apiResponse(['content' => 'aaaaaa']);
+        exit();
+    }
+
 }

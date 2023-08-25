@@ -25,6 +25,7 @@ return new class extends Migration
             $table->date("registration_date")->default(DB::raw('CURRENT_TIMESTAMP'));;
             $table->enum('email_status', array_column(EmailStatusEnum::cases(), 'name'));
             $table->enum('account_type', array_column(AccountTypeEnum::cases(), 'name'));
+            $table->rememberToken();
             $table->timestamps();
         });
     }

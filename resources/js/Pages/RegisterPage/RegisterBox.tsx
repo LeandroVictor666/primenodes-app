@@ -3,31 +3,20 @@ import Style from "../../../css/styles.module.css";
 import { ServerResponse } from "@/types/serverresponse";
 
 export default function RegisterBox({ renderModal }: { renderModal: Dispatch<SetStateAction<{ isActive: boolean; title: string; content: string; modalType: string }>> }) {
-    const [username, setUsername] = useState("");
-    const [fullName, setFullName] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [dateOfBirth, setDateOfBirth] = useState(Date());
-    function validateInput(input: string, min: number, max: number): boolean {
-        if (input.length > min && input.length < max) {
-            return true;
-        }
 
-        return false;
-    }
     const registerEvent = async (e: React.MouseEvent<HTMLInputElement, MouseEvent>) => {
         e.preventDefault();
 
-        if (!validateInput(username, 3, 35)){
+        if (!validateInput(username, 3, 35)) {
             renderModal({ isActive: true, title: "Registration Failed", content: "The minimum amount of characters for Username is 3, and the maximum is 35", modalType: "failure" })
             return;
-        }else if (!validateInput(fullName, 3, 170)){
+        } else if (!validateInput(fullName, 3, 170)) {
             renderModal({ isActive: true, title: "Registration Failed", content: "The minimum amount of characters for Full Name is 3, and the maximum is 170", modalType: "failure" })
             return;
-        }else if (!validateInput(email, 3, 255)){
+        } else if (!validateInput(email, 3, 255)) {
             renderModal({ isActive: true, title: "Registration Failed", content: "The minimum amount of characters for Email is 3, and the maximum is 255", modalType: "failure" })
             return;
-        }else if (!validateInput(password, 3, 255)){
+        } else if (!validateInput(password, 3, 255)) {
             renderModal({ isActive: true, title: "Registration Failed", content: "The minimum amount of characters for Password is 3, and the maximum is 255", modalType: "failure" })
             return;
         }
@@ -44,8 +33,10 @@ export default function RegisterBox({ renderModal }: { renderModal: Dispatch<Set
             },
             body: bodyData
         };
-
         var serverResponse: ServerResponse | undefined;
+
+        
+
         await fetch('/api/register', configurations)
             .then(r => {
                 return r.json();
@@ -71,6 +62,19 @@ export default function RegisterBox({ renderModal }: { renderModal: Dispatch<Set
     }
 
 
+    const [username, setUsername] = useState("");
+    const [fullName, setFullName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [dateOfBirth, setDateOfBirth] = useState(Date());
+
+    function validateInput(input: string, min: number, max: number): boolean {
+        if (input.length > min && input.length < max) {
+            return true;
+        }
+
+        return false;
+    }
 
     function renderusernameInput() {
         if (validateInput(username, 3, 35)) {
@@ -132,6 +136,8 @@ export default function RegisterBox({ renderModal }: { renderModal: Dispatch<Set
             );
         }
     };
+
+
     return (
         <div className={Style.RegisterBoxContainer}>
             <div className={Style.Header}>
