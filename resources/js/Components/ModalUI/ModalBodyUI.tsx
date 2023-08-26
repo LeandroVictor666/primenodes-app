@@ -1,7 +1,7 @@
 
-import { ReactNode } from "react";
 import Style from "../../../css/styles.module.css";
-export default function ModalBodyUI({ content, modaltype }: { content: string, modaltype: string }) {
+
+export default function ModalBodyUI({ content, modaltype }: { content: string | undefined, modaltype: string | undefined }) {
 
     var NotificationCssClass: CSSModuleClasses[string] | undefined;
     var NotificationText: string | undefined;

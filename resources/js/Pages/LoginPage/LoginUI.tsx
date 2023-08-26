@@ -2,11 +2,10 @@
 import { Dispatch, SetStateAction } from "react";
 import LoginFormUI from "./LoginFormUI";
 //#endregion
-export default function LoginUI({ renderModal }: { renderModal: Dispatch<SetStateAction<{ isActive: boolean; title: string; content: string; modalType: string }>> }) {
+export default function LoginUI() {
     return (
         <>
-            <LoginFormUI renderModal={renderModal}/>
+            <LoginFormUI />
         </>
     )
-
 }

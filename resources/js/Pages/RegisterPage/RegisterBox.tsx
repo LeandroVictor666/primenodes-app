@@ -1,26 +1,55 @@
-import { Dispatch, SetStateAction, useState } from "react";
+import { useState } from "react";
 import Style from "../../../css/styles.module.css";
 import { ServerResponse } from "@/types/serverresponse";
 import HttpPostRequest from "@/Controllers/HttpClient/HttpPostClient";
 import { HttpPostRequestType } from "@/types/HttpPostRequestType/HttpPostRequestType";
+import * as ReactRedux from "react-redux";
+import { showModal, ModalType } from "@/Redux/Modal.Redux";
+import IModal from "@/Interface/ModalInterface/ModalInterface";
 
 
-export default function RegisterBox({ renderModal }: { renderModal: Dispatch<SetStateAction<{ isActive: boolean; title: string; content: string; modalType: string }>> }) {
 
+export default function RegisterBox() {
+
+    const dispatch = ReactRedux.useDispatch();
     const registerEvent = async (e: React.MouseEvent<HTMLInputElement, MouseEvent>) => {
         e.preventDefault();
 
         if (!validateInput(username, 3, 35)) {
-            renderModal({ isActive: true, title: "Registration Failed", content: "The minimum amount of characters for Username is 3, and the maximum is 35", modalType: "failure" })
+            const payload: IModal = {
+                title: 'Registration Failed',
+                content: 'The minimum amount of characters for Username is 3, and the maximum is 35',
+                modalType: ModalType.failure,
+                isActive: true
+            };
+            dispatch(showModal(payload));
             return;
         } else if (!validateInput(fullName, 3, 170)) {
-            renderModal({ isActive: true, title: "Registration Failed", content: "The minimum amount of characters for Full Name is 3, and the maximum is 170", modalType: "failure" })
+            const payload: IModal = {
+                title: 'Registration Failed',
+                content: 'The minimum amount of characters for Full Name is 3, and the maximum is 170',
+                modalType: ModalType.failure,
+                isActive: true
+            };
+            dispatch(showModal(payload));
             return;
         } else if (!validateInput(email, 3, 255)) {
-            renderModal({ isActive: true, title: "Registration Failed", content: "The minimum amount of characters for Email is 3, and the maximum is 255", modalType: "failure" })
+            const payload: IModal = {
+                title: 'Registration Failed',
+                content: 'The minimum amount of characters for Email is 3, and the maximum is 255',
+                modalType: ModalType.failure,
+                isActive: true
+            };
+            dispatch(showModal(payload));
             return;
         } else if (!validateInput(password, 3, 255)) {
-            renderModal({ isActive: true, title: "Registration Failed", content: "The minimum amount of characters for Password is 3, and the maximum is 255", modalType: "failure" })
+            const payload: IModal = {
+                title: 'Registration Failed',
+                content: 'The minimum amount of characters for Password is 3, and the maximum is 255',
+                modalType: ModalType.failure,
+                isActive: true
+            };
+            dispatch(showModal(payload));
             return;
         }
         var bodyData = new FormData();
@@ -41,27 +70,28 @@ export default function RegisterBox({ renderModal }: { renderModal: Dispatch<Set
         var serverResponse: RegisterModel | undefined;
         await HttpPostClient.fetchPost(configurations)
             .then(r => {
-                console.log(`r => ${r}`);
                 serverResponse = r;
             })
             .catch(error => {
-                console.log("error catch.");
-                renderModal({ isActive: true, title: "API Connection Error", content: "API Connection error, wait some minutes and try again.", modalType: "failure" })
+                const payload: IModal = { title: 'API Connection Error', content: 'API Connection error, wait some minutes and try again.', modalType: ModalType.failure, isActive: true };
+                dispatch(showModal(payload));
                 return;
             });
 
         if (serverResponse == undefined) {
-            console.log(serverResponse);
-            renderModal({ isActive: true, title: "API Connect3ion Error", content: "API Connection error, wait some minutes and try again.", modalType: "failure" })
+            const payload: IModal = { title: 'API Connection Error', content: 'API Connection error, wait some minutes and try again.', modalType: ModalType.failure, isActive: true };
+            dispatch(showModal(payload));
             return;
         }
         if (serverResponse.isError == 'true') {
-            renderModal({ isActive: true, title: "Registration Failed", content: serverResponse.response, modalType: "failure" })
+            const payload: IModal = { title: 'Registration Failed', content: serverResponse.response, modalType: ModalType.failure, isActive: true };
+            dispatch(showModal(payload));
             return;
         } else {
-            renderModal({ isActive: true, title: "Registration Success!", content: serverResponse.response, modalType: "success" })
+            const payload: IModal = { title: 'Registration Success!', content: serverResponse.response, modalType: ModalType.success, isActive: true };
+            dispatch(showModal(payload));
             return;
-        }
+        };
     }
 
     const [username, setUsername] = useState("");

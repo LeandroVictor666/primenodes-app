@@ -7,12 +7,17 @@ import HttpPostRequest from "@/Controllers/HttpClient/HttpPostClient";
 import { HttpPostRequestType } from "@/types/HttpPostRequestType/HttpPostRequestType";
 import { AUTHENTICATION_CACHE_NAME } from "@/_GLOBALS/_GLOBALS";
 import * as AuthFunctions from "@/Functions/AuthenticationFunctions";
+import * as ReactRedux from "react-redux";
+import IModal from "@/Interface/ModalInterface/ModalInterface";
+import { ModalType, showModal } from "@/Redux/Modal.Redux";
+import { updateAuth } from "@/Redux/Authentication.Redux";
 //#endregion
 
 
-export default function LoginFormUI({ renderModal }: { renderModal: React.Dispatch<React.SetStateAction<{ isActive: boolean; title: string; content: string; modalType: string }>> }) {
+export default function LoginFormUI() {
     const [username, setUsername] = React.useState('');
     const [password, setPassword] = React.useState('');
+    const Dispatch = ReactRedux.useDispatch();
     function validateInput(input: string, min: number, max: number): boolean {
         if (input.length > min && input.length < max) {
             return true;
@@ -22,10 +27,12 @@ export default function LoginFormUI({ renderModal }: { renderModal: React.Dispat
     async function loginFireEvent(event: React.MouseEvent<HTMLInputElement, MouseEvent>) {
         event.preventDefault();
         if (!validateInput(username, 3, 35)) {
-            renderModal({ isActive: true, title: 'title', content: "invalid username, min username characters: 3, max: 35", modalType: 'failure' });
+            const Payload: IModal = { title: 'Login Failed', content: 'Invalid username, min username characters: 3, max: 35', modalType: ModalType.failure, isActive: true };
+            Dispatch(showModal(Payload));
             return;
         } else if (!validateInput(password, 4, 255)) {
-            renderModal({ isActive: true, title: 'title', content: "invalid password, min password characters: 4, max: 255", modalType: 'failure' });
+            const Payload: IModal = { title: 'Login Failed', content: "invalid password, min password characters: 4, max: 255", modalType: ModalType.failure, isActive: true };
+            Dispatch(showModal(Payload));
             return;
         }
 
@@ -48,16 +55,19 @@ export default function LoginFormUI({ renderModal }: { renderModal: React.Dispat
                 serverResponse = r;
             })
             .catch(error => {
-                renderModal({ isActive: true, title: "API Connection Error", content: "API Connection error, wait some minutes and try again.", modalType: "failure" })
+                const Payload: IModal = { title: 'API Connection Error', content: "API Connection error, wait some minutes and try again", modalType: ModalType.failure, isActive: true };
+                Dispatch(showModal(Payload));
                 return;
             });
 
         if (serverResponse === undefined) {
-            renderModal({ isActive: true, title: "API Connection Error", content: "API Connection error, wait some minutes and try again.", modalType: "failure" })
+            const Payload: IModal = { title: 'API Connection Error', content: "API Connection error, wait some minutes and try again", modalType: ModalType.failure, isActive: true };
+            Dispatch(showModal(Payload));
             return;
         }
         if (serverResponse?.isError == 'true') {
-            renderModal({ isActive: true, title: 'title', content: serverResponse.response, modalType: 'failure' });
+            const Payload: IModal = { title: 'Login Failed', content: serverResponse.response, modalType: ModalType.failure, isActive: true };
+            Dispatch(showModal(Payload));
             return;
         }
 
@@ -75,11 +85,18 @@ export default function LoginFormUI({ renderModal }: { renderModal: React.Dispat
             storageType: StorageTypes.localStorage
         };
         if (!cacheController.saveCache(cacheConfiguration)) {
-            renderModal({ isActive: true, title: 'title', content: "Failed To Save Authentication Session.", modalType: 'failure' });
+            const Payload: IModal = { title: 'Login Failed', content: "Failed To Save Authentication Session", modalType: ModalType.failure, isActive: true };
+            Dispatch(showModal(Payload));
+            return;
         };
-        AuthFunctions.updateAuthState(serverResponse.email, serverResponse.full_name, serverResponse.token);
-
-        renderModal({ isActive: true, title: 'Login Sucessfull', content: serverResponse?.response, modalType: 'success' });
+        const AccountPayload = {
+            email: serverResponse.email,
+            fullName: serverResponse.full_name,
+            token: serverResponse.token
+        };
+        Dispatch(updateAuth(AccountPayload));
+        const Payload: IModal = { title: 'Login Sucessfull', content: serverResponse.response, modalType: ModalType.success, isActive: true };
+        Dispatch(showModal(Payload));
         setTimeout(() => {
             window.location.href = "/";
             return;

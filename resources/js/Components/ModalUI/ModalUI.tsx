@@ -2,23 +2,28 @@
 import Style from "../../../css/styles.module.css";
 import ModalHeaderUI from "./ModalHeaderUI";
 import ModalBodyUI from "./ModalBodyUI";
-import { IModalObject } from "@/types/modalObject";
-import { Dispatch, SetStateAction, useEffect } from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { IReducerProps } from "@/Redux/Store";
+import { hiddenModal } from "@/Redux/Modal.Redux";
 
-export default function ModalUI({ modalInterface, renderModal }: { modalInterface: IModalObject, renderModal: Dispatch<SetStateAction<{ isActive: boolean; title: string; content: string; modalType: string }>> }): React.ReactElement | null {
+export default function ModalUI() {
+
+    const dispatch = useDispatch();
+    const thisModal = useSelector((state: IReducerProps) => state.modal);
     useEffect(() => {
         setTimeout(() => {
-            renderModal({ isActive: false, title: '', content: '', modalType: '' })
+            dispatch(hiddenModal());
         }, 4800);
-    }, [modalInterface.isActive])
-    if (modalInterface.isActive == true) {
+    }, [thisModal.isActive])
+
+
+    if (thisModal.isActive === true) {
         return (
             <div className={Style.ModalMain}>
-                <ModalHeaderUI title={modalInterface.title}></ModalHeaderUI>
-                <ModalBodyUI content={modalInterface.content} modaltype={modalInterface.modalType} />
+                <ModalHeaderUI title={thisModal.title}></ModalHeaderUI>
+                <ModalBodyUI content={thisModal.content} modaltype={thisModal.modalType} />
             </div>
         )
-    } else {
-        return null;
-    }
+    };
 }

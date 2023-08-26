@@ -1,35 +1,30 @@
 import * as ReduxToolkit from "@reduxjs/toolkit";
 import { AccountData } from "@/types/Account/AccountData";
+import { stat } from "fs";
 const UPDATE_AUTH = "Authentication@UPDATEAUTH";
 const REMOVE_AUTH = "Authentication@REMOVEAUTH";
 
-export const updateAuth = ReduxToolkit.createAction(UPDATE_AUTH);
-export const removeAuth = ReduxToolkit.createAction(REMOVE_AUTH);
-const initialState: AccountData | undefined = {
+const initialState: AccountData = {
     email: undefined,
     full_name: undefined,
     token: undefined,
 };
 
-const reducer = (
-    state = initialState,
-    action: ReduxToolkit.PayloadAction<AccountData>
-) => {
-    switch (action.type) {
-        case UPDATE_AUTH: {
-            
-            var newState = state;
-            newState = action.payload;
-
-            return newState;
-        }
-        case REMOVE_AUTH: {
-            return undefined;
-        }
-        default: {
-            return state;
-        }
-    }
-};
-
-export default reducer;
+const slice = ReduxToolkit.createSlice({
+    name: "Authentication",
+    initialState: initialState,
+    reducers: {
+        updateAuth(state, action) {
+            state.email = action.payload.email;
+            state.full_name = action.payload.full_name;
+            state.token = action.payload.token;
+        },
+        removeAuth(state) {
+            state.email = initialState.email;
+            state.full_name = initialState.full_name;
+            state.token = initialState.token;
+        },
+    },
+});
+export const { updateAuth, removeAuth } = slice.actions;
+export default slice.reducer;
