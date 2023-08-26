@@ -37,9 +37,13 @@ class LoginController extends Controller
         };
         $deviceName = "{\"username\" : \"{$request['username']}\",  \"device_name\" : \"{$request['device_name']}\"}";
         $token = $queryResult->createToken($deviceName)->plainTextToken;
-        $this->apiResponse(['response' => 'Login Sucessfull',
-        'isError' => 'false',
-        'token' => $token], 200);
+        $this->apiResponse([
+            'response' => 'Login Sucessfull',
+            'isError' => 'false',
+            'full_name' => $queryResult->full_name,
+            'email' => $queryResult->email,
+            'token' => $token
+        ], 200);
         exit();
     }
 }
