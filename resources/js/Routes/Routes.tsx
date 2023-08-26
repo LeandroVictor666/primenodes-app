@@ -1,25 +1,30 @@
-// import * as AuthFunctions from "@/Functions/AuthenticationFunctions";
-// import { BrowserRouter as Router, Route } from "react-router-dom";
-// import HomePageUI from "@/Pages/HomePage/HomePageUI";
-// import RegisterUI from "@/Pages/RegisterPage/RegisterUI";
-// import LoginUI from "@/Pages/LoginPage/LoginUI";
-// import * as React from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import HomePageUI from "@/Pages/HomePage/HomePageUI";
+import RegisterUI from "@/Pages/RegisterPage/RegisterUI";
+import LoginUI from "@/Pages/LoginPage/LoginUI";
+import { IsAuthenticated } from "@/Functions/AuthenticationFunctions";
 
-// const allRoutes = () => {
-//     return (
-//         <>
-//             <Route path="/" element={<HomePageUI />}></Route>
-//             <Route path="/Register" element={<RegisterUI/>}></Route>
-//             <Route path="/Login" element={<LoginUI renderModal={renderModal} />}></Route>
-//         </>
-//     )
-// };
+const allRoutes = () => {
+    return (
+        <>
+            <Route path="/" element={<HomePageUI />}></Route>
+            <Route path="/Register" element={<RegisterUI />}></Route>
+            <Route path="/Login" element={<LoginUI />}></Route>
+        </>
+    )
+};
 
-// export default function Routes({ renderModal }: { renderModal: React.Dispatch<React.SetStateAction<{ isActive: boolean; title: string; content: string; modalType: string }>>}) {
-//     if (!AuthFunctions.IsAuthenticated()) {
-//         <>
-//             {allRoutes(renderModal)}
-//         </>
-//     }
-// }
-// //<Route path="/" element={<HomePageUI />}></Route>
+
+export const Routes = () => {
+    if (IsAuthenticated()) {
+
+        return (
+            <>
+                <Route path="/MyAccount" element={<LoginUI />}></Route>
+            </>
+        )
+
+
+    }
+
+}
