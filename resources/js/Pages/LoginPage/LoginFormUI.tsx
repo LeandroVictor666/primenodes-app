@@ -1,18 +1,18 @@
 //#region Imports
 import Styles from "../../../css/styles.module.css";
-import { Dispatch, SetStateAction, useState } from "react";
+import * as React from "react";
 import CacheController from "@/Controllers/Cache/CacheController";
 import { StorageTypes } from "@/Enums/StorageTypes/StorageTypes";
-import * as React from "react";
 import HttpPostRequest from "@/Controllers/HttpClient/HttpPostClient";
 import { HttpPostRequestType } from "@/types/HttpPostRequestType/HttpPostRequestType";
 import { AUTHENTICATION_CACHE_NAME } from "@/_GLOBALS/_GLOBALS";
+import * as AuthFunctions from "@/Functions/AuthenticationFunctions";
 //#endregion
 
 
-export default function LoginFormUI({ renderModal }: { renderModal: Dispatch<SetStateAction<{ isActive: boolean; title: string; content: string; modalType: string }>> }) {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+export default function LoginFormUI({ renderModal }: { renderModal: React.Dispatch<React.SetStateAction<{ isActive: boolean; title: string; content: string; modalType: string }>> }) {
+    const [username, setUsername] = React.useState('');
+    const [password, setPassword] = React.useState('');
     function validateInput(input: string, min: number, max: number): boolean {
         if (input.length > min && input.length < max) {
             return true;
@@ -77,6 +77,8 @@ export default function LoginFormUI({ renderModal }: { renderModal: Dispatch<Set
         if (!cacheController.saveCache(cacheConfiguration)) {
             renderModal({ isActive: true, title: 'title', content: "Failed To Save Authentication Session.", modalType: 'failure' });
         };
+        AuthFunctions.updateAuthState(serverResponse.email, serverResponse.full_name, serverResponse.token);
+
         renderModal({ isActive: true, title: 'Login Sucessfull', content: serverResponse?.response, modalType: 'success' });
         setTimeout(() => {
             window.location.href = "/";

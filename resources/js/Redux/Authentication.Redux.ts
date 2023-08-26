@@ -3,10 +3,8 @@ import { AccountData } from "@/types/Account/AccountData";
 const UPDATE_AUTH = "Authentication@UPDATEAUTH";
 const REMOVE_AUTH = "Authentication@REMOVEAUTH";
 
-
 export const updateAuth = ReduxToolkit.createAction(UPDATE_AUTH);
-export const removeAuth = () => ({ type: REMOVE_AUTH });
-
+export const removeAuth = ReduxToolkit.createAction(REMOVE_AUTH);
 const initialState: AccountData | undefined = {
     email: undefined,
     full_name: undefined,
