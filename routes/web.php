@@ -23,17 +23,17 @@ use Inertia\Inertia;
 Route::get('/', [MainPageController::class, 'render'])->name('main');
 Route::get('/Register', [RegisterController::class, 'render'])->name('register');
 Route::get('/Login', [LoginController::class, 'render'])->name('login');
-Route::get("/testApplication", function () {
-    $inJs = json_encode(['fuckfuck' => 'yeafuckthepolice']);
-    echo $inJs;
-    exit();
-});
 
+/*
+|--------------------------------------------------------------------------
+| Web Authenticated Routes
+|--------------------------------------------------------------------------
+|
+| Aqui fica as rotas que só podem ser acessadas através de autenticação.
+|
+*/
 Route::group(['middleware' => 'primenodes.auth'], function () {
-    Route::get("/MyAccount", function () {
-        
-    
-    });
+    Route::get("/MyAccount", [MyAccountController::class, 'render'])->name("myaccount");
 });
 
 require __DIR__ . '/auth.php';

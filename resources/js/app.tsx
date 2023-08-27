@@ -9,6 +9,7 @@ createInertiaApp({
     title: (title) => `${appName}`,
     resolve: (name) => resolvePageComponent(`./Pages/Application.tsx`, import.meta.glob('./Pages/Application.tsx')),
     setup({ el, App, props }) {
+        console.log("PROPS-> ",props.initialPage.props.AccountInformations);
         const root = createRoot(el);
         root.render(<App {...props} />);
     },

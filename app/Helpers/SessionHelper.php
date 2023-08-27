@@ -2,12 +2,16 @@
 
 namespace App\Helpers;
 
+use Illuminate\Support\Arr;
 
 class SessionHelper
 {
 
-    public $AUTHENTICATION_KEY = 'AuthenticationToken';
-    public $AUTHENTICATION_USERNAME = 'AuthenticationUsername';
+
+    // public $AUTHENTICATION_KEY = 'AuthenticationToken';
+    // public $AUTHENTICATION_USERNAME = 'AuthenticationUsername';
+    // public $AUTHENTICATION_ID = 'AuthenticationID';
+    // public $AUTHENTICATION_EMAIL = 'AuthenticationEmail';
 
     /**
      * Checa se o usuario esta logado fazendo checagens na super variavel $_SESSION, pois salvamos algumas informações lá
@@ -20,13 +24,38 @@ class SessionHelper
     public function checkAuthentication(): bool
     {
         session_start();
-        if (!isset($_SESSION[$this->AUTHENTICATION_KEY])) {
-            return false;
-        }
-        if (!isset($_SESSION[$this->AUTHENTICATION_USERNAME])) {
-            return false;
-        }
+        $sessionKeys =  $this->getSessionKeyNames();
 
+        if (!isset($_SESSION[$sessionKeys['AUTHENTICATION_ID']])){
+            return false;
+        }else if (!isset($_SESSION[$sessionKeys['AUTHENTICATION_USERNAME']])) {
+            return false;
+        }else if (!isset($_SESSION[$sessionKeys['AUTHENTICATION_FULLNAME']])){
+            return false;
+        }else if (!isset($_SESSION[$sessionKeys['AUTHENTICATION_EMAIL']])){
+            return false;
+        }else if (!isset($_SESSION[$sessionKeys['AUTHENTICATOIN_EMAILSTATUS']])){
+            return false;
+        }else if (!isset($_SESSION[$sessionKeys['AUTHENTICATION_BIRTHDAY']])){
+            return false;
+        }else if (!isset($_SESSION[$sessionKeys['AUTHENTICATION_TOKEN']])) {
+            return false;
+        }
         return true;
+    }
+
+
+    public static function getSessionKeyNames(): array|null
+    {
+        $sessionKeys = [
+            'AUTHENTICATION_ID' => 'AuthenticationID',
+            'AUTHENTICATION_USERNAME' => 'AuthenticationUsername',
+            'AUTHENTICATION_FULLNAME' => 'AuthenticationFullname',
+            'AUTHENTICATION_EMAIL' => 'AuthenticationEmail',
+            'AUTHENTICATOIN_EMAILSTATUS' => 'AuthenticationEmailStatus',
+            'AUTHENTICATION_BIRTHDAY' => 'AuthenticationBirthday',
+            'AUTHENTICATION_TOKEN' => 'AuthenticationToken'
+        ];
+        return $sessionKeys;
     }
 }

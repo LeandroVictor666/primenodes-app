@@ -7,15 +7,13 @@ use App\Http\Requests\LoginAccountRequest;
 use App\Models\Account;
 use Inertia\Inertia;
 
-const AUTHENTICATION_KEY = 'AuthenticationToken';
-const AUTHENTICATION_USERNAME = 'AuthenticationUsername';
 class LoginController extends Controller
 {
 
 
     public function render()
     {
-        return Inertia::render('LoginPage/Login', []);
+        return Inertia::render('AuthenticatedPages/MyAccount', []);
     }
 
     public function loginEvent(LoginAccountRequest $request, Account $accountModel)
@@ -49,10 +47,16 @@ class LoginController extends Controller
             'email' => $queryResult->email,
             'token' => $token
         ], 200);
-        
 
-        $_SESSION[SessionHelper::$AUTHENTICATION_KEY] = $token;
-        $_SESSION[SessionHelper::$AUTHENTICATION_USERNAME] = $token;
+        $sessionKeyNames = SessionHelper::getSessionKeyNames();
+        $_SESSION[$sessionKeyNames['AUTHENTICATION_ID']] = $queryResult->id;
+        $_SESSION[$sessionKeyNames['AUTHENTICATION_USERNAME']] = $queryResult->username;
+        $_SESSION[$sessionKeyNames['AUTHENTICATION_FULLNAME']] = $queryResult->full_name;
+        $_SESSION[$sessionKeyNames['AUTHENTICATION_EMAIL']] = $queryResult->email;
+        $_SESSION[$sessionKeyNames['AUTHENTICATOIN_EMAILSTATUS']] = $queryResult->email_status;
+        $_SESSION[$sessionKeyNames['AUTHENTICATION_BIRTHDAY']] = $queryResult->date_of_birth;
+        $_SESSION[$sessionKeyNames['AUTHENTICATION_TOKEN']] = $token;
+
         exit();
     }
 }
