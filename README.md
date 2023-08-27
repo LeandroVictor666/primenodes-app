@@ -24,7 +24,7 @@ desde o codigo até o usuario final.
 #
 Também utilizando tecnologias como o babel, e gulp para automatização de codigos, comandos já prontos em .sh para ajudar no ambiente de desenvolvimento, como automatização da minificação de arquivos css.
 # Avisos
-O projeto ficara parado por alguns dias, este é o meu primeiro projeto utilizando React, então é comum que eu passe alguns dias sem dar updates por conta dos estudos.
-gosto de manter meus projetos com a melhor qualidade possivel, quando eu retornar, provavelmente o projeto ira sofrer uma refatoração (no Front-End.)
+O projeto PODE ficar por alguns dias, este é o meu primeiro projeto utilizando React, então é comum que eu passe alguns dias sem dar updates por conta dos estudos.
+gosto de manter meus projetos com a melhor qualidade possivel.
 
 
