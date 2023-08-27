@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\SessionHelper;
 use App\Http\Requests\LoginAccountRequest;
 use App\Models\Account;
 use Inertia\Inertia;
+
+const AUTHENTICATION_KEY = 'AuthenticationToken';
+const AUTHENTICATION_USERNAME = 'AuthenticationUsername';
 class LoginController extends Controller
 {
 
@@ -16,6 +20,7 @@ class LoginController extends Controller
 
     public function loginEvent(LoginAccountRequest $request, Account $accountModel)
     {
+        session_start();;
         $password = $request['password'];
         $queryResult = $accountModel->where("username", '=', $request['username'])->first();
 
@@ -44,6 +49,10 @@ class LoginController extends Controller
             'email' => $queryResult->email,
             'token' => $token
         ], 200);
+        
+
+        $_SESSION[SessionHelper::$AUTHENTICATION_KEY] = $token;
+        $_SESSION[SessionHelper::$AUTHENTICATION_USERNAME] = $token;
         exit();
     }
 }

@@ -29,8 +29,11 @@ Route::get("/testApplication", function () {
     exit();
 });
 
-Route::group(['middleware' => 'auth'], function () {
-    Route::get("/MyAccount", [MyAccountController::class], 'render');
+Route::group(['middleware' => 'primenodes.auth'], function () {
+    Route::get("/MyAccount", function () {
+        
+    
+    });
 });
 
 require __DIR__ . '/auth.php';
