@@ -59,4 +59,26 @@ class LoginController extends Controller
 
         exit();
     }
+
+    public function logout()
+    {
+        if (!SessionHelper::checkAuthentication()) {
+            return \redirect('/', 200);
+            exit();
+        };
+
+        if (!SessionHelper::removeSessionAuth()) {
+            $this->apiResponse([
+                'response' => 'logout failed',
+                'isError' => 'true'
+            ], 400);
+            exit();
+        };
+        $this->apiResponse([
+            'response' => 'logout sucess',
+            'isError' => 'false'
+        ], 200);
+        exit();
+        
+    }
 }

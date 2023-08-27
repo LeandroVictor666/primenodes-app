@@ -21,29 +21,30 @@ class SessionHelper
      * Pensei em algumas formas, porém, essa aqui é a mais simples e direta.
      * Criando nosso proprio middleware + uma class que tenha a logica da autenticação.
      */
-    public function checkAuthentication(): bool
+    public static function checkAuthentication(): bool
     {
-        session_start();
-        $sessionKeys =  $this->getSessionKeyNames();
+        if (\session_status() !== PHP_SESSION_ACTIVE){
+            \session_start();
+        }
 
-        if (!isset($_SESSION[$sessionKeys['AUTHENTICATION_ID']])){
+        $sessionKeys = self::getSessionKeyNames();
+        if (!isset($_SESSION[$sessionKeys['AUTHENTICATION_ID']])) {
             return false;
-        }else if (!isset($_SESSION[$sessionKeys['AUTHENTICATION_USERNAME']])) {
+        } else if (!isset($_SESSION[$sessionKeys['AUTHENTICATION_USERNAME']])) {
             return false;
-        }else if (!isset($_SESSION[$sessionKeys['AUTHENTICATION_FULLNAME']])){
+        } else if (!isset($_SESSION[$sessionKeys['AUTHENTICATION_FULLNAME']])) {
             return false;
-        }else if (!isset($_SESSION[$sessionKeys['AUTHENTICATION_EMAIL']])){
+        } else if (!isset($_SESSION[$sessionKeys['AUTHENTICATION_EMAIL']])) {
             return false;
-        }else if (!isset($_SESSION[$sessionKeys['AUTHENTICATOIN_EMAILSTATUS']])){
+        } else if (!isset($_SESSION[$sessionKeys['AUTHENTICATOIN_EMAILSTATUS']])) {
             return false;
-        }else if (!isset($_SESSION[$sessionKeys['AUTHENTICATION_BIRTHDAY']])){
+        } else if (!isset($_SESSION[$sessionKeys['AUTHENTICATION_BIRTHDAY']])) {
             return false;
-        }else if (!isset($_SESSION[$sessionKeys['AUTHENTICATION_TOKEN']])) {
+        } else if (!isset($_SESSION[$sessionKeys['AUTHENTICATION_TOKEN']])) {
             return false;
         }
         return true;
     }
-
 
     public static function getSessionKeyNames(): array|null
     {
@@ -57,5 +58,19 @@ class SessionHelper
             'AUTHENTICATION_TOKEN' => 'AuthenticationToken'
         ];
         return $sessionKeys;
+    }
+
+    public static function removeSessionAuth(): bool
+    {
+        if (\session_status() !== PHP_SESSION_ACTIVE){
+            \session_start();
+        }
+        if (!session_unset()) {
+            return false;
+        }
+        if (!session_destroy()) {
+            return false;
+        }
+        return true;
     }
 }

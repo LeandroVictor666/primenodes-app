@@ -4,6 +4,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Requests\LoginAccountRequest;
 use App\Http\Requests\RegisterAccountRequest;
+use App\Http\Controllers\MyAccountController;
 use App\Models\Account;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -28,6 +29,6 @@ Route::middleware('api')->post('/login', function (LoginAccountRequest $request,
     return $loginController->loginEvent($request, $accountModel);    
 });
 
-Route::group(['middleware' => 'primenodes.auth'], function () {
-    Route::get("/api/logou", [MyAccountController::class, 'render'])->name("myaccount");
+Route::middleware('api')->post('/logout', function (LoginController $loginController) {
+    return $loginController->logout();
 });

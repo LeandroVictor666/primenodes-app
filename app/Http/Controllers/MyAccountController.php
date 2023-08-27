@@ -18,6 +18,8 @@ class MyAccountController extends Controller
     }
 
 
+
+
     public function getAccountInformationBySession(): array|null
     {
         $sessionKeyNames = SessionHelper::getSessionKeyNames();
