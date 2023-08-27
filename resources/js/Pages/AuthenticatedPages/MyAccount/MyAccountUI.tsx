@@ -169,12 +169,10 @@ export const MyAccountUI = () => {
                     <p>{userAccount.full_name}</p>
                 </div>
                 <div className={Styles.MyAccountInformationsContainer}>
-                    <p>ID = {userAccount.id}</p>
                     <p onClick={() => Dispatch(showModalForm({ title: 'Input Your New Username', isActive: true, fnToExecute: async (input: string) => await changeUsername(input, userAccount.token, Dispatch) }))}>Username = {userAccount.username}</p>
                     <p onClick={() => Dispatch(showModalForm({ title: 'Input Your New E-Mail.', isActive: true, fnToExecute: async (input: string) => await changeEmail(input, userAccount.token, Dispatch) }))}>Email = {userAccount.email}</p>
                     <p>Email Status = {userAccount.email_status}</p>
                     <p>Date Of Birthday: {userAccount.date_of_birth}</p>
-                    <p>Secret Token: {userAccount.token}</p>
                 </div>
 
             </div>

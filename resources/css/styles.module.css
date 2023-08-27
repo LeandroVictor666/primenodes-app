@@ -496,6 +496,8 @@ input[type=submit]:active {
   border: 1px solid rgb(198, 198, 198);
   border-radius: 15px;
   padding: 8px;
+  padding-top: 50px;
+  height: 35%;
   background-color: rgb(154, 154, 154);
   text-align: center;
 }
@@ -512,7 +514,7 @@ input[type=submit]:active {
   cursor: pointer;
 }
 .MyAccountContainer .MyAccountInformationsContainer:hover {
-  background-color: rgb(158, 158, 158);
+  background-color: rgb(197, 197, 197);
 }
 .MyAccountContainer .MyAccountContainer::selection {
   background-color: black;
