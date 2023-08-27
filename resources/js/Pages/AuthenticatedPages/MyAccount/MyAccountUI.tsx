@@ -47,7 +47,6 @@ function dispatchUI(title: string, content: string, modalType: ModalType, Dispat
  * @param dispatch 
  */
 const changeUsername = async (input: string, token: string, dispatch: ReduxToolkit.Dispatch<ReduxToolkit.AnyAction>) => {
-
     const myAccountController = new MyAccountController(token);
     var serverResponse: ServerResponse;
     await myAccountController.updateUsername(input)
@@ -98,6 +97,61 @@ const changeUsername = async (input: string, token: string, dispatch: ReduxToolk
         });
 };
 
+const changeEmail = async (input: string, token: string, dispatch: ReduxToolkit.Dispatch<ReduxToolkit.AnyAction>) => {
+
+    const myAccountController = new MyAccountController(token);
+    var serverResponse: ServerResponse;
+    await myAccountController.updateEmail(input)
+        .then(response => {
+            if (response === undefined) {
+                dispatchUI('Failed to change E-Mail', 'Failed to update E-Mail, try again in few hours.', ModalType.failure, dispatch);
+                setTimeout(() => {
+                    window.location.reload();
+                }, 3250);
+                return;
+            }
+            serverResponse = response;
+
+            if (serverResponse.isError !== "true") {
+                console.log(`serverResponse:: ${serverResponse}`);
+                dispatchUI('E-Mail changed successfully!', serverResponse.response, ModalType.success, dispatch);
+                setTimeout(() => {
+                    var cacheController = new CacheController();
+                    var cacheEl: cacheElements = {
+                        cacheName: "Authentication",
+                        cacheValue: undefined,
+                        storageType: StorageTypes.localStorage,
+                    };
+                    cacheController.removeCache(cacheEl);
+                    window.location.href = "/login";
+                }, 3200);
+            } else {
+                dispatchUI('Failed to change E-Mail.', serverResponse.response, ModalType.failure, dispatch);
+                setTimeout(() => {
+                    window.location.reload();
+                }, 3250);
+                return;
+            }
+        })
+        .catch(error => {
+            if (error === undefined) {
+                dispatchUI('Failed to change E-Mail', 'Failed to update E-Mail, try again in few hours.', ModalType.failure, dispatch);
+                setTimeout(() => {
+                    window.location.reload();
+                }, 3250);
+                return;
+            };
+            dispatchUI('Failed to change E-Mail.', error.response[0].response, ModalType.failure, dispatch);
+            setTimeout(() => {
+                window.location.reload();
+            }, 3250);
+            return;
+        });
+
+}
+
+
+
 /**
  * MyAccount Component.
  * @returns 
@@ -117,7 +171,7 @@ export const MyAccountUI = () => {
                 <div className={Styles.MyAccountInformationsContainer}>
                     <p>ID = {userAccount.id}</p>
                     <p onClick={() => Dispatch(showModalForm({ title: 'Input Your New Username', isActive: true, fnToExecute: async (input: string) => await changeUsername(input, userAccount.token, Dispatch) }))}>Username = {userAccount.username}</p>
-                    <p>Email = {userAccount.email}</p>
+                    <p onClick={() => Dispatch(showModalForm({ title: 'Input Your New E-Mail.', isActive: true, fnToExecute: async (input: string) => await changeEmail(input, userAccount.token, Dispatch) }))}>Email = {userAccount.email}</p>
                     <p>Email Status = {userAccount.email_status}</p>
                     <p>Date Of Birthday: {userAccount.date_of_birth}</p>
                     <p>Secret Token: {userAccount.token}</p>

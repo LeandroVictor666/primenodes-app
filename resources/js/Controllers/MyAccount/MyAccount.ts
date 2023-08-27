@@ -1,10 +1,9 @@
+//#region imports
 import IMyAccount from "@/Interface/MyAccountInterface/IMyAccount";
 import HttpPostRequest from "../HttpClient/HttpPostClient";
 import { HttpPostRequestType } from "@/types/HttpRequestType/HttpPostRequestType";
-import CacheController from "../Cache/CacheController";
-import { cacheElements } from "@/Interface/CacheInterface/ICacheInterface";
-import { StorageTypes } from "@/Enums/StorageTypes/StorageTypes";
 import { ServerResponse } from "@/types/serverresponse";
+//#endregion
 
 export default class MyAccountController implements IMyAccount {
     tokenAuth: string;
@@ -57,6 +56,49 @@ export default class MyAccountController implements IMyAccount {
         return Promise.resolve(serverResponse);
     }
 
-    updateEmail(): void {}
+
+    async updateEmail(newEmail: string): Promise<ServerResponse | undefined> {
+        if (newEmail.length < 3) {
+            const response = [
+                {
+                    response:
+                        "The new E-Mail field must be at least 3 characters.",
+                    isError: "true",
+                },
+            ];
+            return Promise.reject(response);
+        } else if (newEmail.length > 255) {
+            const response = [
+                {
+                    response:
+                        "The new E-Mail field must not be greater than 255 characters.",
+                    isError: "true",
+                },
+            ];
+            return Promise.reject(response);
+        }
+        var formData = new FormData();
+        formData.append("newEmail", newEmail);
+        const httpPostRequest = new HttpPostRequest();
+        const HttpConfigurations: HttpPostRequestType = {
+            url: "/api/updateEmail",
+            header: {
+                Authentication: `Bearer ${this.tokenAuth}`,
+                "Content-Type": "application/json",
+            },
+            body: formData,
+        };
+        var serverResponse;
+        await httpPostRequest
+            .fetchPost(HttpConfigurations)
+            .then((response) => {
+                serverResponse = response as ServerResponse;
+            })
+            .catch((error) => {
+                return Promise.reject(error);
+            });
+        if (serverResponse === undefined) return Promise.reject(undefined);
+        return Promise.resolve(serverResponse);
+    }
     updateDateOfBirthday(): void {}
 }

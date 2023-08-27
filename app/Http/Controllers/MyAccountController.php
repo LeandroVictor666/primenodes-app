@@ -81,7 +81,6 @@ class MyAccountController extends Controller
         exit();
     }
 
-
     public function changeEmail(UpdateAccountRequest $request, Account $accountModel)
     {
         $newEmail = $request['newEmail'];

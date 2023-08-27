@@ -17,7 +17,6 @@ export default class HttpPostRequest implements IHttpPostRequest {
                 serverToClient = svResponse;
             })
             .catch((error) => {
-                window.alert(`fn Error=> ${error}`);
                 return Promise.reject(undefined);
             });
 
