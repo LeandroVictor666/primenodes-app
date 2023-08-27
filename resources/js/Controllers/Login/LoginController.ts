@@ -33,7 +33,7 @@ export default class LoginController implements LoginInterface {
 
         const httpPostRequest = new HttpPostRequest();
         const httpPostRequestConfig: HttpPostRequestType = {
-            header: {
+            headers: {
                 Authorization: `Bearer ${authCache.token}`,
             },
             body: undefined,

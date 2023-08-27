@@ -32,16 +32,17 @@ export default class MyAccountController implements IMyAccount {
             ];
             return Promise.reject(response);
         }
-        var formData = new FormData();
-        formData.append("newUsername", newUsername);
+        const formData = {
+            newUsername: newUsername,
+        };
         const httpPostRequest = new HttpPostRequest();
         const HttpConfigurations: HttpPostRequestType = {
             url: "/api/updateUsername",
-            header: {
-                Authentication: `Bearer ${this.tokenAuth}`,
+            headers: {
+                Authorization: `Bearer ${this.tokenAuth}`,
                 "Content-Type": "application/json",
             },
-            body: formData,
+            body: JSON.stringify(formData),
         };
         var serverResponse;
         await httpPostRequest
@@ -55,7 +56,6 @@ export default class MyAccountController implements IMyAccount {
         if (serverResponse === undefined) return Promise.reject(undefined);
         return Promise.resolve(serverResponse);
     }
-
 
     async updateEmail(newEmail: string): Promise<ServerResponse | undefined> {
         if (newEmail.length < 3) {
@@ -77,16 +77,17 @@ export default class MyAccountController implements IMyAccount {
             ];
             return Promise.reject(response);
         }
-        var formData = new FormData();
-        formData.append("newEmail", newEmail);
+        const bodyData = {
+            newEmail: newEmail,
+        };
         const httpPostRequest = new HttpPostRequest();
         const HttpConfigurations: HttpPostRequestType = {
             url: "/api/updateEmail",
-            header: {
-                Authentication: `Bearer ${this.tokenAuth}`,
+            headers: {
+                Authorization: `Bearer ${this.tokenAuth}`,
                 "Content-Type": "application/json",
             },
-            body: formData,
+            body: JSON.stringify(bodyData),
         };
         var serverResponse;
         await httpPostRequest

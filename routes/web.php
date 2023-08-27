@@ -5,7 +5,9 @@ use App\Http\Controllers\MainPageController;
 use App\Http\Controllers\MyAccountController;
 use App\Http\Controllers\RegisterController;
 use App\Models\Account;
+use GuzzleHttp\Psr7\Request;
 use Illuminate\Foundation\Application;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -23,6 +25,18 @@ use Inertia\Inertia;
 Route::get('/', [MainPageController::class, 'render'])->name('main');
 Route::get('/Register', [RegisterController::class, 'render'])->name('register');
 Route::get('/Login', [LoginController::class, 'render'])->name('login');
+// Route::get('/testApp', function(){
+//     if (Auth::check()){
+//         echo 'is auth';
+//     }
+//     echo 'Okay';
+//     exit();
+// });
+
+Route::middleware('auth:sanctum')->get('/testApp', function () {
+    echo 'okay';
+    exit();
+});
 
 /*
 |--------------------------------------------------------------------------

@@ -52,20 +52,25 @@ export default function RegisterBox() {
             dispatch(showModal(payload));
             return;
         }
-        var bodyData = new FormData();
-        bodyData.append("username", username);
-        bodyData.append("full_name", fullName);
-        bodyData.append("email", email);
-        bodyData.append("password", password);
-        bodyData.append("date_of_birth", dateOfBirth);
-
+        const bodyData = {
+            username: username,
+            full_name: fullName,
+            email: email,
+            password: password,
+            date_of_birth: dateOfBirth
+        };
+        // bodyData.append("username", username);
+        // bodyData.append("full_name", fullName);
+        // bodyData.append("email", email);
+        // bodyData.append("password", password);
+        // bodyData.append("date_of_birth", dateOfBirth);
         var HttpPostClient = new HttpPostRequest();
         var configurations: HttpPostRequestType = {
             url: '/api/register',
-            header: {
-                "Content-Type": "application/json"
+            headers: {
+                "Content-Type": "application/json",
             },
-            body: bodyData
+            body: JSON.stringify(bodyData)
         };
         var serverResponse: RegisterModel | undefined;
         await HttpPostClient.fetchPost(configurations)

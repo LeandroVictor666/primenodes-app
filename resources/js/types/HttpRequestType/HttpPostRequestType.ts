@@ -1,5 +1,5 @@
 export type HttpPostRequestType = {
     url: string;
-    header: HeadersInit | null | undefined;
+    headers: HeadersInit | null | undefined;
     body: BodyInit | null | undefined;
 };
