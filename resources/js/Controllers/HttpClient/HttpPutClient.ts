@@ -1,10 +1,10 @@
-import { IHttpPostRequest } from "@/Interface/HttpClientRequest/HttpPostRequest/IHttpPostRequest";
-import { HttpPostRequestType } from "@/types/HttpRequestType/HttpPostRequestType";
+import { IHttpPutRequest } from "@/Interface/HttpClientRequest/HttpPutRequest/IHttpPutRequest";
+import { HttpPutRequestType } from "@/types/HttpRequestType/HttpPutRequestType";
 
-export default class HttpPostRequest implements IHttpPostRequest {
-    async fetchPost(settings: HttpPostRequestType): Promise<any | undefined> {
+export default class HttpPutClient implements IHttpPutRequest {
+    async fetchAPI(settings: HttpPutRequestType): Promise<any> {
         const configurations = {
-            method: 'POST',
+            method: 'PUT',
             header: settings.header,
             body: settings.body,
         };
@@ -14,14 +14,12 @@ export default class HttpPostRequest implements IHttpPostRequest {
                 return r.json();
             })
             .then((svResponse) => {
-                console.log(svResponse);
                 serverToClient = svResponse;
             })
             .catch((error) => {
                 window.alert(`fn Error=> ${error}`);
                 return Promise.reject(undefined);
             });
-
 
         return Promise.resolve(serverToClient);
     }

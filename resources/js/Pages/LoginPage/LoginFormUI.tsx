@@ -4,7 +4,7 @@ import * as React from "react";
 import CacheController from "@/Controllers/Cache/CacheController";
 import { StorageTypes } from "@/Enums/StorageTypes/StorageTypes";
 import HttpPostRequest from "@/Controllers/HttpClient/HttpPostClient";
-import { HttpPostRequestType } from "@/types/HttpPostRequestType/HttpPostRequestType";
+import { HttpPostRequestType } from "@/types/HttpRequestType/HttpPostRequestType";
 import { AUTHENTICATION_CACHE_NAME } from "@/_GLOBALS/_GLOBALS";
 import * as AuthFunctions from "@/Functions/AuthenticationFunctions";
 import * as ReactRedux from "react-redux";

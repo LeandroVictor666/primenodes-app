@@ -32,3 +32,7 @@ Route::middleware('api')->post('/login', function (LoginAccountRequest $request,
 Route::middleware('api')->post('/logout', function (LoginController $loginController) {
     return $loginController->logout();
 });
+
+Route::middleware('api')->post('/updateUsername', function (MyAccountController $myAccountController, Request $request, Account $accountModel){
+    return $myAccountController->changeUsername($request, $accountModel);
+});

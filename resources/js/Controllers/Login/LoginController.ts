@@ -4,7 +4,7 @@ import { cacheElements } from "@/Interface/CacheInterface/ICacheInterface";
 import * as Globals from "@/_GLOBALS/_GLOBALS";
 import { StorageTypes } from "@/Enums/StorageTypes/StorageTypes";
 import HttpPostRequest from "../HttpClient/HttpPostClient";
-import { HttpPostRequestType } from "@/types/HttpPostRequestType/HttpPostRequestType";
+import { HttpPostRequestType } from "@/types/HttpRequestType/HttpPostRequestType";
 import * as ReactRedux from "react-redux";
 import { removeAuth } from "@/Redux/Authentication.Redux";
 import { AccountData } from "@/types/Account/AccountData";

@@ -143,10 +143,6 @@ input {
   display: block;
 }
 
-input[type=text][type=password] {
-  background-color: red;
-}
-
 input {
   color: black;
   width: 80%;
@@ -369,6 +365,88 @@ input[type=submit]:active {
 .ModalMain .ModalBody .ModalAlert {
   background-color: rgb(237, 241, 0);
   box-shadow: 0px 3px 18px rgb(237, 241, 0);
+}
+
+.ModalFormUI {
+  position: absolute;
+  background-color: white;
+  margin-left: 50%;
+  transform: translate(-50%);
+  margin-top: 7%;
+  z-index: 9999;
+  width: 60%;
+  height: 35%;
+  border: 1.4px solid black;
+  border-radius: 7px;
+}
+.ModalFormUI p {
+  color: black;
+}
+.ModalFormUI .ModalFormHeader {
+  background-color: #696969;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid purple;
+  border-end-end-radius: 30px;
+  margin-bottom: 10px;
+}
+.ModalFormUI .ModalFormHeader p {
+  color: #000000;
+  font-size: 34px;
+}
+.ModalFormUI .ModalFormHeader p:hover {
+  cursor: default;
+  font-size: 36px;
+}
+.ModalFormUI .ModalFormHeader:hover {
+  background-color: #7b7b7b;
+}
+.ModalFormUI .ModalFormDivContent {
+  display: block;
+  background-color: #858585;
+  justify-content: center;
+  align-items: center;
+  margin-left: 50%;
+  transform: translate(-50%);
+  width: 90%;
+  height: 60%;
+  border: 1px solid #4b4b4b;
+  border-radius: 7px;
+}
+.ModalFormUI .ModalFormDivContent input {
+  background-color: rgb(74, 74, 74);
+  border: 1px solid rgb(188, 188, 188);
+  text-align: center;
+  width: 35%;
+  margin-top: 2%;
+}
+.ModalFormUI .ModalFormDivContent input:hover {
+  border: 1px solid white;
+  background-color: rgb(156, 156, 156);
+}
+.ModalFormUI .ModalFormDivContent input:active {
+  background-color: rgb(38, 38, 38);
+}
+.ModalFormUI .ModalFormDivContent button {
+  background-color: rgb(74, 74, 74);
+  border: 1px solid rgb(188, 188, 188);
+  margin-left: 50%;
+  transform: translate(-50%);
+  width: 30%;
+  height: 30px;
+}
+.ModalFormUI .ModalFormDivContent button:hover {
+  color: black;
+  background-color: rgb(156, 156, 156);
+  border: 1px solid black;
+  cursor: pointer;
+}
+.ModalFormUI .ModalFormDivContent button:active {
+  width: 32%;
+  background-color: rgb(38, 38, 38);
 }
 
 .MyAccountContainer {

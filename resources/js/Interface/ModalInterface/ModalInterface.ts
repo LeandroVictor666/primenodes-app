@@ -1,4 +1,4 @@
-import { ModalType } from "@/types/modaltype";
+import { ModalType } from "@/Redux/Modal.Redux";
 
 export default interface IModal {
     title: string | undefined;

@@ -1,0 +1,84 @@
+.ModalFormUI {
+    p {
+        color: black;
+    }
+    position: absolute;
+    background-color: white;
+    margin-left: 50%;
+    transform: translate(-50%);
+    margin-top: 7%;
+    z-index: 9999;
+    width: 60%;
+    height: 35%;
+    border: 1.4px solid black;
+    border-radius: 7px;
+    .ModalFormHeader {
+        background-color: #696969;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-bottom: 1px solid purple;
+        border-end-end-radius: 30px;
+        margin-bottom: 10px;
+        p {
+            color: #000000;
+            font-size: 34px;
+        }
+        p:hover {
+            cursor: default;
+            font-size: 36px;
+        }
+    }
+    .ModalFormHeader:hover {
+        background-color: #7b7b7b;
+    }
+
+    .ModalFormDivContent {
+        display: block;
+        background-color: #858585;
+        justify-content: center;
+        align-items: center;
+        margin-left: 50%;
+        transform: translate(-50%);
+        width: 90%;
+        height: 60%;
+        border: 1px solid #4b4b4b;
+        border-radius: 7px;
+        input{
+            background-color: rgb(74, 74, 74);
+            border: 1px solid rgb(188, 188, 188);
+            text-align: center;
+            width: 35%;
+            margin-top: 2%;
+        }
+        input:hover{
+            border: 1px solid white;
+            background-color: rgb(156, 156, 156);
+        }
+        input:active{
+            
+            background-color: rgb(38, 38, 38);
+        }
+        button{
+            background-color: rgb(74, 74, 74);
+            border: 1px solid rgb(188, 188, 188);
+            margin-left: 50%;
+            transform: translate(-50%);
+            width: 30%;
+            height: 30px;
+        }
+        button:hover{
+            color: black;
+            background-color: rgb(156, 156, 156);
+            border: 1px solid black;
+            cursor: pointer;
+        }
+        button:active{
+            width: 32%;
+            background-color: rgb(38, 38, 38);
+        }
+
+    }
+}

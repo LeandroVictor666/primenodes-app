@@ -2,7 +2,7 @@ import { useState } from "react";
 import Style from "../../../css/styles.module.css";
 import { ServerResponse } from "@/types/serverresponse";
 import HttpPostRequest from "@/Controllers/HttpClient/HttpPostClient";
-import { HttpPostRequestType } from "@/types/HttpPostRequestType/HttpPostRequestType";
+import { HttpPostRequestType } from "@/types/HttpRequestType/HttpPostRequestType";
 import * as ReactRedux from "react-redux";
 import { showModal, ModalType } from "@/Redux/Modal.Redux";
 import IModal from "@/Interface/ModalInterface/ModalInterface";
