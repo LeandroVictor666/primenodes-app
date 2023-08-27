@@ -14,7 +14,6 @@ export default class HttpPostRequest implements IHttpPostRequest {
                 return r.json();
             })
             .then((svResponse) => {
-                console.log(svResponse);
                 serverToClient = svResponse;
             })
             .catch((error) => {

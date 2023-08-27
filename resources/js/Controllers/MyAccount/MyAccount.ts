@@ -1,8 +1,6 @@
 import IMyAccount from "@/Interface/MyAccountInterface/IMyAccount";
 import HttpPostRequest from "../HttpClient/HttpPostClient";
 import { HttpPostRequestType } from "@/types/HttpRequestType/HttpPostRequestType";
-import HttpPutClient from "../HttpClient/HttpPutClient";
-import { HttpPutRequestType } from "@/types/HttpRequestType/HttpPutRequestType";
 import CacheController from "../Cache/CacheController";
 import { cacheElements } from "@/Interface/CacheInterface/ICacheInterface";
 import { StorageTypes } from "@/Enums/StorageTypes/StorageTypes";
@@ -10,18 +8,17 @@ import { ServerResponse } from "@/types/serverresponse";
 
 export default class MyAccountController implements IMyAccount {
     tokenAuth: string;
-
     constructor(tokenAuth: string) {
         this.tokenAuth = tokenAuth;
     }
-
     async updateUsername(
         newUsername: string
-    ): Promise<JSON | undefined | ServerResponse> {
+    ): Promise<ServerResponse | undefined> {
         if (newUsername.length < 3) {
             const response = [
                 {
-                    response: "Invalid Username length, MIN Length: 3",
+                    response:
+                        "The new username field must be at least 4 characters.",
                     isError: "true",
                 },
             ];
@@ -29,13 +26,13 @@ export default class MyAccountController implements IMyAccount {
         } else if (newUsername.length > 35) {
             const response = [
                 {
-                    response: "Invalid  Username length, MAX Length: 35",
+                    response:
+                        "The new username field must not be greater than 35 characters.",
                     isError: "true",
                 },
             ];
             return Promise.reject(response);
         }
-
         var formData = new FormData();
         formData.append("newUsername", newUsername);
         const httpPostRequest = new HttpPostRequest();
@@ -51,24 +48,13 @@ export default class MyAccountController implements IMyAccount {
         await httpPostRequest
             .fetchPost(HttpConfigurations)
             .then((response) => {
-                serverResponse = response;
-                if (response.isError === "false") {
-                    var cacheController = new CacheController();
-                    var cacheEl: cacheElements = {
-                        cacheName: "Authentication",
-                        cacheValue: undefined,
-                        storageType: StorageTypes.localStorage,
-                    };
-                    cacheController.removeCache(cacheEl);
-                    window.location.href = "/login";
-                    Promise.resolve(response);
-                    return;
-                }
-                Promise.reject(serverResponse);
+                serverResponse = response as ServerResponse;
             })
             .catch((error) => {
-                Promise.reject(error);
+                return Promise.reject(error);
             });
+        if (serverResponse === undefined) return Promise.reject(undefined);
+        return Promise.resolve(serverResponse);
     }
 
     updateEmail(): void {}

@@ -26,7 +26,6 @@ class SessionHelper
         if (\session_status() !== PHP_SESSION_ACTIVE){
             \session_start();
         }
-
         $sessionKeys = self::getSessionKeyNames();
         if (!isset($_SESSION[$sessionKeys['AUTHENTICATION_ID']])) {
             return false;
@@ -45,7 +44,6 @@ class SessionHelper
         }
         return true;
     }
-
     public static function getSessionKeyNames(): array|null
     {
         $sessionKeys = [

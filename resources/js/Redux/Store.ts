@@ -6,6 +6,9 @@ import ModalFormRedux from "./ModalForm.Redux";
 import IModal from "@/Interface/ModalInterface/ModalInterface";
 import IModalForm from "@/Interface/ModalInterface/ModalFormInterface";
 
+
+
+
 export interface IReducerProps {
     counter: {
         total:number;
@@ -20,6 +23,7 @@ const store = ReduxToolkit.configureStore({
         modal:ModalRedux,
         modalForm:ModalFormRedux,
     },
+
 });
 
 export default store;

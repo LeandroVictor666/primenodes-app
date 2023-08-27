@@ -5,6 +5,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Requests\LoginAccountRequest;
 use App\Http\Requests\RegisterAccountRequest;
 use App\Http\Controllers\MyAccountController;
+use App\Http\Requests\UpdateAccountRequest;
 use App\Models\Account;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -33,6 +34,6 @@ Route::middleware('api')->post('/logout', function (LoginController $loginContro
     return $loginController->logout();
 });
 
-Route::middleware('api')->post('/updateUsername', function (MyAccountController $myAccountController, Request $request, Account $accountModel){
+Route::middleware('api')->post('/updateUsername', function (MyAccountController $myAccountController, UpdateAccountRequest $request, Account $accountModel){
     return $myAccountController->changeUsername($request, $accountModel);
 });

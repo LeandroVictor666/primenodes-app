@@ -3,12 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\SessionHelper;
+use App\Http\Requests\UpdateAccountRequest;
 use App\Models\Account;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 class MyAccountController extends Controller
 {
+
+    public function __construct()
+    {
+        if (\session_status() !== PHP_SESSION_ACTIVE) {
+            \session_start();
+        }
+    }
 
     public function render(): \Inertia\Response
     {
@@ -41,32 +49,26 @@ class MyAccountController extends Controller
         return $accountInformations;
     }
 
-    function changeUsername(Request $request, Account $accountModel)
+    function changeUsername(UpdateAccountRequest $request, Account $accountModel)
     {
-        session_start();
-
         $newUsername = $request['newUsername'];
-        if (mb_strlen($newUsername) < 3) {
+        $sessionKeyNames = SessionHelper::getSessionKeyNames();
+        $actualUsername = $_SESSION[$sessionKeyNames['AUTHENTICATION_USERNAME']];
+        if ($newUsername === $actualUsername) {
             $this->apiResponse([
-                'response' => 'Invalid username, Min Length: 3',
+                'response' => 'This is already your current username.',
                 'isError' => 'true'
             ], 400);
-        } else if (\mb_strlen($newUsername) > 35) {
-            $this->apiResponse([
-                'response' => 'Invalid username, Max Length: 35',
-                'isError' => 'true'
-            ], 400);
-        };
-
+            exit();
+        }
         $usernameIsAlreadyTaken = $accountModel->where("username", "=", $newUsername)->first();
         if ($usernameIsAlreadyTaken !== null) {
             $this->apiResponse([
                 'response' => 'This username is already taken. choose another',
                 'isError' => 'true'
             ], 400);
+            exit();
         };
-
-        $sessionKeyNames = SessionHelper::getSessionKeyNames();
         $userId = $_SESSION[$sessionKeyNames['AUTHENTICATION_ID']];
         $userAccount = $accountModel->find($userId);
         $userAccount->username = $newUsername;
@@ -78,4 +80,41 @@ class MyAccountController extends Controller
         SessionHelper::removeSessionAuth();
         exit();
     }
+
+
+    public function changeEmail(UpdateAccountRequest $request, Account $accountModel)
+    {
+        $newEmail = $request['newEmail'];
+        $sessionKeyNames = SessionHelper::getSessionKeyNames();
+        $actualEmail = $_SESSION[$sessionKeyNames['AUTHENTICATION_EMAIL']];
+        if ($newEmail === $actualEmail) {
+            $this->apiResponse([
+                'response' => 'This is already your current E-mail.',
+                'isError' => 'true'
+            ], 400);
+            exit();
+        }
+        $emailIsAlreadyTaken = $accountModel->where("email", "=", $newEmail)->first();
+        if ($emailIsAlreadyTaken !== null) {
+            $this->apiResponse([
+                'response' => 'This E-mail is already taken. choose another',
+                'isError' => 'true'
+            ], 400);
+            exit();
+        };
+        $userId = $_SESSION[$sessionKeyNames['AUTHENTICATION_ID']];
+        $userAccount = $accountModel->find($userId);
+        $userAccount->email = $newEmail;
+        $userAccount->save();
+        $this->apiResponse([
+            'response' => 'E-mail changed sucessfully!',
+            'isError' => 'false'
+        ]);
+        SessionHelper::removeSessionAuth();
+        exit();
+    }
+
+
+
+
 }
