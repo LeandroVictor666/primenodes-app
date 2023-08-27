@@ -38,8 +38,6 @@ Route::middleware('auth:sanctum')->post('/updateUsername', function (MyAccountCo
     return $myAccountController->changeUsername($request, $accountModel);
 });
 
-Route::middleware('api')->post('/updateEmail', function(MyAccountController $myAccountController, UpdateAccountRequest $request, Account $account){
-    return $myAccountController->changeEmail($request, $account);
+Route::middleware('auth:sanctum')->post('/updateEmail', function (MyAccountController $myAccountController, UpdateAccountRequest $request, Account $accountModel){
+    return $myAccountController->changeEmail($request, $accountModel);
 });
-
-// Route::middleware('auth:sanctum')->get('/testApp', function () {
