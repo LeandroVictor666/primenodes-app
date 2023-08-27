@@ -19,12 +19,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
-
-
 Route::middleware('api')->post('/register', function (RegisterAccountRequest $request, Account $accountModel, RegisterController $registerController) {
     return $registerController->registerEvent($request, $accountModel);
 });
@@ -34,11 +28,6 @@ Route::middleware('api')->post('/login', function (LoginAccountRequest $request,
     return $loginController->loginEvent($request, $accountModel);    
 });
 
-
-// Route::middleware(['auth:sanctum'])->group(function (){
-
-
-
-// });
-
-//or
+Route::group(['middleware' => 'primenodes.auth'], function () {
+    Route::get("/api/logou", [MyAccountController::class, 'render'])->name("myaccount");
+});

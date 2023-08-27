@@ -1,34 +1,6 @@
 import * as AuthFunction from "@/Functions/AuthenticationFunctions";
 import Styles from "../../../css/styles.module.css";
 function redirectUrl(URI: string | Location): any { window.location = URI as Location; }
-
-async function redirectUrlWToken(URI: string | Location): Promise<any> {
-    const AccountData = AuthFunction.getInformations();
-    const cofigurations = {
-        method: 'POST',
-        header: {
-            Authorization: `Bearer ${AccountData?.token}`
-        }
-    };
-
-    await fetch(`${URI}`, cofigurations)
-        .then(r => {
-            window.location = URI as Location;
-            return Promise<true>;
-        })
-        .catch(error => {
-            window.alert(`error`);
-            console.log("error=> ", error);
-            return;
-        });
-
-}
-
-    // window.location = URI as Location;
-
-
-
-
 export default function FinalSection() {
 
     if (!AuthFunction.IsAuthenticated()) {
@@ -52,9 +24,9 @@ export default function FinalSection() {
     };
     return (
         <div className={Styles.finalSection}>
-            <p onClick={() => redirectUrl('#')}>{AccountData.full_name}</p>
+            <p onClick={() => redirectUrl("/MyAccount")}>MyAccount</p>
             <hr className={Styles.verticalLine}></hr>
-            <p onClick={() => redirectUrl("#")}>MyAccount</p>
+            <p onClick={() => redirectUrl('/api/logout')}>Logout</p>
         </div>
     )
 
