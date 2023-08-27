@@ -1,0 +1,68 @@
+.MyAccountContainer {
+    cursor: default;
+    display: block;
+    margin-top: 5%;
+    margin-left: 50%;
+    width: 60%;
+    height: 460px;
+    padding: 10px;
+    transform: translate(-50%);
+    background-color: rgb(77, 77, 77);
+    flex-wrap: wrap;
+    p {
+        color: black;
+    }
+    .MyAccountHeader {
+        transition: 1s;
+        padding-top: 10px;
+        margin-bottom: 10px;
+        height: 200px;
+        background-color: rgb(118, 118, 118);
+        text-align: center;
+        border: 1px solid rgb(190, 190, 190);
+        border-radius: 15px;
+        p {
+            font-size: 32px;
+        }
+        p:hover {
+            font-size: 34px;
+        }
+        .MyAccountPfp {
+            max-width: 140px;
+            border: 1px solid rgb(206, 206, 206);
+            border-radius: 100%;
+        }
+        .MyAccountPfp:hover {
+            max-width: 155px;
+        }
+    }
+    .MyAccountHeader:hover {
+        background-color: rgb(158, 158, 158);
+    }
+    .MyAccountInformationsContainer {
+        transition: 1s;
+        border: 1px solid rgb(198, 198, 198);
+        border-radius: 15px;
+        padding: 8px;
+        background-color: rgb(154, 154, 154);
+        text-align: center;
+        p {
+            background-color: rgb(134, 134, 134);
+            border-radius: 5px;
+            margin-top: 10px;
+            font-family: "Roboto Condensed", sans-serif;
+            font-size: 19px;
+        }
+        p:hover {
+            background-color: rgb(110, 109, 109);
+            font-size: 20px;
+            cursor: pointer;
+        }
+    }
+    .MyAccountInformationsContainer:hover {
+        background-color: rgb(158, 158, 158);
+    }
+    .MyAccountContainer::selection {
+        background-color: black;
+    }
+}

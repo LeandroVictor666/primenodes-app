@@ -3,6 +3,11 @@
     transition: 0.5s;
 }
 
+::selection{
+    background-color: purple;
+    color: rgb(16, 16, 16);
+}
+
 body {
     background-color: #313131;
 }

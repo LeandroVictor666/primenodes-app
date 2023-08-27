@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Barlow:wght@100&family=Inter:wght@200&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@100&family=Inter:wght@200&family=Roboto+Condensed:ital,wght@1,300&display=swap");
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -107,6 +108,11 @@ header .finalSection p:hover {
 * {
   color: white;
   transition: 0.5s;
+}
+
+::selection {
+  background-color: purple;
+  color: rgb(16, 16, 16);
 }
 
 body {
@@ -363,6 +369,75 @@ input[type=submit]:active {
 .ModalMain .ModalBody .ModalAlert {
   background-color: rgb(237, 241, 0);
   box-shadow: 0px 3px 18px rgb(237, 241, 0);
+}
+
+.MyAccountContainer {
+  cursor: default;
+  display: block;
+  margin-top: 5%;
+  margin-left: 50%;
+  width: 60%;
+  height: 460px;
+  padding: 10px;
+  transform: translate(-50%);
+  background-color: rgb(77, 77, 77);
+  flex-wrap: wrap;
+}
+.MyAccountContainer p {
+  color: black;
+}
+.MyAccountContainer .MyAccountHeader {
+  transition: 1s;
+  padding-top: 10px;
+  margin-bottom: 10px;
+  height: 200px;
+  background-color: rgb(118, 118, 118);
+  text-align: center;
+  border: 1px solid rgb(190, 190, 190);
+  border-radius: 15px;
+}
+.MyAccountContainer .MyAccountHeader p {
+  font-size: 32px;
+}
+.MyAccountContainer .MyAccountHeader p:hover {
+  font-size: 34px;
+}
+.MyAccountContainer .MyAccountHeader .MyAccountPfp {
+  max-width: 140px;
+  border: 1px solid rgb(206, 206, 206);
+  border-radius: 100%;
+}
+.MyAccountContainer .MyAccountHeader .MyAccountPfp:hover {
+  max-width: 155px;
+}
+.MyAccountContainer .MyAccountHeader:hover {
+  background-color: rgb(158, 158, 158);
+}
+.MyAccountContainer .MyAccountInformationsContainer {
+  transition: 1s;
+  border: 1px solid rgb(198, 198, 198);
+  border-radius: 15px;
+  padding: 8px;
+  background-color: rgb(154, 154, 154);
+  text-align: center;
+}
+.MyAccountContainer .MyAccountInformationsContainer p {
+  background-color: rgb(134, 134, 134);
+  border-radius: 5px;
+  margin-top: 10px;
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 19px;
+}
+.MyAccountContainer .MyAccountInformationsContainer p:hover {
+  background-color: rgb(110, 109, 109);
+  font-size: 20px;
+  cursor: pointer;
+}
+.MyAccountContainer .MyAccountInformationsContainer:hover {
+  background-color: rgb(158, 158, 158);
+}
+.MyAccountContainer .MyAccountContainer::selection {
+  background-color: black;
 }
 
 /*# sourceMappingURL=styles.module.css.map */
