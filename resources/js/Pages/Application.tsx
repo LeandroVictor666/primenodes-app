@@ -14,11 +14,6 @@ import { usePage } from "@inertiajs/react";
 //#endregion
 
 export default function App({ propBase }: { propBase: PropBase }) {
-    // console.group("inertiaJs");
-    // console.log("usePage: ", usePage().props.AccountInformations);
-    // console.groupEnd();
-    
-
     return (
         <React.StrictMode>
             <ReactRedux.Provider store={store}>

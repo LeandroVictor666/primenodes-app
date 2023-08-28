@@ -65,3 +65,19 @@ input[type="submit"]:active {
     background-color: rgb(43, 43, 43);
     color: white;
 }
+
+
+button{
+    background-color: transparent;
+    min-width: 70px;
+    min-height: 25px;
+
+    
+    border: 1px solid rgb(181, 181, 181);
+    border-radius: 6px;
+}
+button:hover{
+    cursor: pointer;
+    border: 1px solid black;
+    color: black;
+}
