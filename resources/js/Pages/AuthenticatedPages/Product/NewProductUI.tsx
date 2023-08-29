@@ -180,62 +180,59 @@ export const NewProductUI = () => {
     const Dispatch = ReactRedux.useDispatch();
 
     return (
-        <>
-            <div className={Style.NewProductController}>
-                <div className={Style.NewProductHeader}>
-                    <p>Hello, Leandro Victor</p>
-                    <p>What do you want to sell?</p>
-                </div>
-                <div className={Style.NewProductPanel}>
-                    <div className={Style.Painel1}>
-                        <div className={Style.Painel1Header}>
-                            <input type="file" id="select-img-input" onChange={(e) => { imageSelectedChanged(e.target.files?.item(0)) }} accept="image/png, image/jpeg" style={{ display: 'none' }}></input>
-                            <p>Select A Image</p>
-                            <img src="/assets/images/product-images/broken-image.png" id="image-selected" onClick={() => { selectImageFunction() }} className={Style.ProductImgSelect} />
-                        </div>
+        <div className={Style.NewProductController}>
+            <div className={Style.NewProductHeader}>
+                <p>Hello, {userAccount.full_name}</p>
+                <p>What do you want to sell?</p>
+            </div>
+            <div className={Style.NewProductPanel}>
+                <div className={Style.Painel1}>
+                    <div className={Style.Painel1Header}>
+                        <input type="file" id="select-img-input" onChange={(e) => { imageSelectedChanged(e.target.files?.item(0)) }} accept="image/png, image/jpeg" style={{ display: 'none' }}></input>
+                        <p>Select A Image</p>
+                        <img src="/assets/images/product-images/broken-image.png" id="image-selected" onClick={() => { selectImageFunction() }} className={Style.ProductImgSelect} />
                     </div>
-                    <div className={Style.Painel2}>
-                        <div className={Style.Painel2Form}>
-                            <p>Name</p>
-                            <input type="text" id="product-name" value={productName} onChange={(e) => productDataHandler(e)}></input>
-                            <p>Description</p>
-                            <input type="text" id="product-description" value={productDescription} onChange={(e) => productDataHandler(e)}></input>
-                            <p>Category</p>
-                            {/* Tentei automatizar a categoria usando um loop, mas não consegui :P TS me atrapalhou xD*/}
-                            <select id="product-category" name="ItemCategory" onChange={(e) => productDataHandler(e)}>
-                                <option value="GPU">GPU</option>
-                                <option value="CPU">CPU</option>
-                                <option value="VideoCard">Placa De Video</option>
-                                <option value="Processor">Processador</option>
-                                <option value="MotherBoard">Placa Mãe</option>
-                                <option value="RAM">Memoria Ram</option>
-                                <option value="SSD">SSD</option>
-                                <option value="HDD">HDD</option>
-                                <option value="PowerSupply">Fonte</option>
-                                <option value="Cooler">Cooler</option>
-                                <option value="Fans">Fans</option>
-                                <option value="ComputerCase">Gabinete</option>
-                            </select>
-                            <p>Product Status</p>
-                            <select id="product-status" name="ProductState" onChange={(e) => productDataHandler(e)}>
-                                <option value="New">New</option>
-                                <option value="Used">Used</option>
-                            </select>
-                            <p>Price</p>
-                            <input id="product-price" value={productPrice} onChange={(e) => productDataHandler(e)} type="number"></input>
-                            <button onClick={async () => { await sendNewProductEvent(Dispatch) }}>
-                                Start Selling
-                            </button>
-
-                        </div>
+                </div>
+                <div className={Style.Painel2}>
+                    <div className={Style.Painel2Form}>
+                        <p>Name</p>
+                        <input type="text" id="product-name" value={productName} onChange={(e) => productDataHandler(e)}></input>
+                        <p>Description</p>
+                        <input type="text" id="product-description" value={productDescription} onChange={(e) => productDataHandler(e)}></input>
+                        <p>Category</p>
+                        {/* Tentei automatizar a categoria usando um loop, mas não consegui :P TS me atrapalhou xD*/}
+                        <select id="product-category" name="ItemCategory" onChange={(e) => productDataHandler(e)}>
+                            <option value="GPU">GPU</option>
+                            <option value="CPU">CPU</option>
+                            <option value="VideoCard">Placa De Video</option>
+                            <option value="Processor">Processador</option>
+                            <option value="MotherBoard">Placa Mãe</option>
+                            <option value="RAM">Memoria Ram</option>
+                            <option value="SSD">SSD</option>
+                            <option value="HDD">HDD</option>
+                            <option value="PowerSupply">Fonte</option>
+                            <option value="Cooler">Cooler</option>
+                            <option value="Fans">Fans</option>
+                            <option value="ComputerCase">Gabinete</option>
+                        </select>
+                        <p>Product Status</p>
+                        <select id="product-status" name="ProductState" onChange={(e) => productDataHandler(e)}>
+                            <option value="New">New</option>
+                            <option value="Used">Used</option>
+                        </select>
+                        <p>Price</p>
+                        <input id="product-price" value={productPrice} onChange={(e) => productDataHandler(e)} type="number"></input>
+                        <button onClick={async () => { await sendNewProductEvent(Dispatch) }}>
+                            Start Selling
+                        </button>
 
                     </div>
 
                 </div>
 
             </div>
-        </>
 
+        </div>
     )
 
 }
