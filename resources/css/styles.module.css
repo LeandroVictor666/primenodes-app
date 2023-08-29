@@ -618,6 +618,7 @@ button:hover {
 .NewProductController .NewProductPanel .Painel1 .Painel1Header .ProductImgSelect:hover {
   cursor: pointer;
   border-color: rgb(195, 0, 198);
+  filter: blur(1.4px);
 }
 .NewProductController .NewProductPanel .Painel2 {
   text-align: center;
