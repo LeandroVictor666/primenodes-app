@@ -2,20 +2,16 @@
     color: #ffff;
     transition: 0.5s;
 }
-
-::selection{
+::selection {
     background-color: purple;
     color: rgb(16, 16, 16);
 }
-
 body {
     background-color: #313131;
 }
-
 p {
     font-family: "Inter", sans-serif;
 }
-
 .verticalLine {
     border-width: 0.2px;
     border-color: rgb(39, 0, 116);
@@ -23,7 +19,6 @@ p {
     height: 2.3em;
     margin-right: 0.9em;
 }
-
 .horizontalLine {
     border-width: 0.2px;
     border-color: rgb(39, 0, 116);
@@ -31,16 +26,11 @@ p {
     height: 0.1px;
     margin-right: 0.9em;
 }
-
 input {
     display: block;
 }
-
 input[type="text"][type="password"] {
- 
 }
-
-
 input {
     color: black;
     width: 80%;
@@ -49,13 +39,11 @@ input {
     margin-left: 50%;
     transform: translate(-50%);
 }
-
 input[type="submit"] {
     height: 2.5em;
     width: 50%;
     border: 1.4px solid rgb(122, 122, 122);
 }
-
 input:hover {
     cursor: pointer;
     background-color: #c9c9c9;
@@ -65,18 +53,15 @@ input[type="submit"]:active {
     background-color: rgb(43, 43, 43);
     color: white;
 }
-
-
-button{
+button {
     background-color: transparent;
     min-width: 70px;
     min-height: 25px;
 
-    
     border: 1px solid rgb(181, 181, 181);
     border-radius: 6px;
 }
-button:hover{
+button:hover {
     cursor: pointer;
     border: 1px solid black;
     color: black;

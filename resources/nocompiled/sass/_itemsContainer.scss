@@ -1,4 +1,21 @@
-.itemsContainer{
+.ItemPainelController {
+    display: flex;
+    padding: 25px;
+    justify-content: center;
+    background-color: rgb(69, 69, 69);
+    p {
+        border: 1px solid rgb(35, 35, 35);
+        border-radius: 8px;
+        padding: 7px;
+        margin-left: 8px;
+    }
+    p:hover {
+        cursor: pointer;
+        border: 1px solid rgb(0, 0, 0);
+        color: #000000aa;
+    }
+}
+.itemsContainer {
     display: flex;
     margin-top: 4%;
     margin-left: 50%;
@@ -12,6 +29,4 @@
     max-width: 65%;
     overflow-y: auto;
     flex-wrap: wrap;
-
 }
-

@@ -11,6 +11,7 @@ import * as ReactRedux from "react-redux";
 import store from "@/Redux/Store";
 import { MyAccountUI } from "./AuthenticatedPages/MyAccount/MyAccountUI";
 import { usePage } from "@inertiajs/react";
+import { AuthRoutes } from "@/Routes/Routes";
 //#endregion
 
 export default function App({ propBase }: { propBase: PropBase }) {
@@ -24,7 +25,8 @@ export default function App({ propBase }: { propBase: PropBase }) {
                         <Route path="/" element={<HomePageUI />}></Route>
                         <Route path="/Register" element={<RegisterUI/>}></Route>
                         <Route path="/Login" element={<LoginUI/>}></Route>
-                        <Route path="/MyAccount" element={<MyAccountUI/>}></Route>
+                        {AuthRoutes()}
+                        
                     </Routes>
                 </Router>
             </ReactRedux.Provider>

@@ -11,7 +11,10 @@ export default function HomePageUI() {
     const [sProducts, setProducts] = useState(Products);
     return (
         <>
-            
+            <div className={Styles.ItemPainelController}>
+                <p onClick={()=> {window.location.href = "/product/newproduct"}}>Add Product</p>
+                <p>Search Product</p>
+            </div>
             <div className={Styles.itemsContainer}>
                 {sProducts.map((product, index) => {
                     return (

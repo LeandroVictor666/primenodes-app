@@ -5,6 +5,8 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Requests\LoginAccountRequest;
 use App\Http\Requests\RegisterAccountRequest;
 use App\Http\Controllers\MyAccountController;
+use App\Http\Controllers\ProductController;
+use App\Http\Requests\NewProductRequest;
 use App\Http\Requests\UpdateAccountRequest;
 use App\Models\Account;
 use Illuminate\Http\Request;
@@ -40,4 +42,8 @@ Route::middleware('auth:sanctum')->post('/updateUsername', function (MyAccountCo
 
 Route::middleware('auth:sanctum')->post('/updateEmail', function (MyAccountController $myAccountController, UpdateAccountRequest $request, Account $accountModel){
     return $myAccountController->changeEmail($request, $accountModel);
+});
+
+Route::middleware('auth:sanctum')->post('/product/firenewproduct', function (NewProductRequest $request, ProductController $productController){
+    return $productController->fireNewProductEvent($request);
 });

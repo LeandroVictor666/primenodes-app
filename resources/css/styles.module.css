@@ -182,6 +182,24 @@ button:hover {
   color: black;
 }
 
+.ItemPainelController {
+  display: flex;
+  padding: 25px;
+  justify-content: center;
+  background-color: rgb(69, 69, 69);
+}
+.ItemPainelController p {
+  border: 1px solid rgb(35, 35, 35);
+  border-radius: 8px;
+  padding: 7px;
+  margin-left: 8px;
+}
+.ItemPainelController p:hover {
+  cursor: pointer;
+  border: 1px solid rgb(0, 0, 0);
+  color: rgba(0, 0, 0, 0.6666666667);
+}
+
 .itemsContainer {
   display: flex;
   margin-top: 4%;
@@ -546,6 +564,107 @@ button:hover {
 }
 .MyAccountContainer .MyAccountContainer::selection {
   background-color: black;
+}
+
+.NewProductController {
+  background-color: rgb(46, 46, 46);
+  margin-top: 2.5em;
+  margin-left: 50%;
+  transform: translate(-50%);
+  width: 60em;
+  height: 26em;
+  border: 1px solid black;
+  border-radius: 9px;
+  padding: 5px;
+}
+.NewProductController .NewProductHeader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(59, 59, 59);
+  height: 5.5em;
+  flex-wrap: wrap;
+}
+.NewProductController .NewProductHeader p {
+  text-align: center;
+  width: 100%;
+  display: block;
+}
+.NewProductController .NewProductPanel {
+  display: grid;
+  grid-template-columns: 35% 65%;
+  padding-top: 10px;
+}
+.NewProductController .NewProductPanel .Painel1 {
+  height: 310px;
+  border: 1px solid rgb(25, 25, 25);
+  border-radius: 7px;
+}
+.NewProductController .NewProductPanel .Painel1 .Painel1Header {
+  padding-top: 7px;
+  text-align: center;
+}
+.NewProductController .NewProductPanel .Painel1 .Painel1Header p {
+  font-size: 28px;
+  cursor: default;
+}
+.NewProductController .NewProductPanel .Painel1 .Painel1Header .ProductImgSelect {
+  margin-top: 13%;
+  max-width: 15 0px;
+  max-height: 150px;
+  border-radius: 100%;
+  border: 1px solid rgb(0, 0, 0);
+}
+.NewProductController .NewProductPanel .Painel1 .Painel1Header .ProductImgSelect:hover {
+  cursor: pointer;
+  border-color: rgb(195, 0, 198);
+}
+.NewProductController .NewProductPanel .Painel2 {
+  text-align: center;
+  background-color: rgb(46, 46, 46);
+  border: 1px solid rgb(25, 25, 25);
+  border-radius: 7px;
+  margin-left: 10px;
+  height: 70%;
+  max-height: 85%;
+}
+.NewProductController .NewProductPanel .Painel2 button {
+  height: 40px;
+}
+.NewProductController .NewProductPanel .Painel2 button:hover {
+  border-color: rgb(255, 0, 0);
+  color: rgb(221, 0, 0);
+}
+.NewProductController .NewProductPanel .Painel2 .Painel2Form {
+  max-height: 90%;
+  margin-top: 1%;
+  overflow: auto;
+}
+.NewProductController .NewProductPanel .Painel2 .Painel2Form p {
+  margin-bottom: 7px;
+  cursor: default;
+}
+.NewProductController .NewProductPanel .Painel2 .Painel2Form input {
+  width: 30%;
+  height: 25px;
+}
+.NewProductController .NewProductPanel .Painel2 .Painel2Form select {
+  color: rgb(23, 23, 23);
+  margin-bottom: 5%;
+  height: 30px;
+  width: 30%;
+  cursor: pointer;
+}
+.NewProductController .NewProductPanel .Painel2 .Painel2Form select:hover {
+  background-color: rgb(193, 193, 193);
+}
+.NewProductController .NewProductPanel .Painel2 .Painel2Form option {
+  background-color: black;
+  color: rgb(255, 255, 255);
+}
+.NewProductController .NewProductPanel .Painel2:hover,
+.NewProductController .NewProductPanel .Painel1:hover {
+  background-color: rgb(41, 41, 41);
 }
 
 /*# sourceMappingURL=styles.module.css.map */

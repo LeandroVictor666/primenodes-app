@@ -17,5 +17,6 @@ class VerifyCsrfToken extends Middleware
         'api/logout',
         'api/updateUsername',
         'api/updateEmail',
+        'api/product/firenewproduct'
     ];
 }

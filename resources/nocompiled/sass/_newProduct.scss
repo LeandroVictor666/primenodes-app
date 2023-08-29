@@ -1,0 +1,105 @@
+.NewProductController {
+    background-color: rgb(46, 46, 46);
+    margin-top: 2.5em;
+    margin-left: 50%;
+    transform: translate(-50%);
+    width: 60em;
+    height: 26em;
+    border: 1px solid black;
+    border-radius: 9px;
+    padding: 5px;
+    .NewProductHeader {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(59, 59, 59);
+        height: 5.5em;
+        flex-wrap: wrap;
+        p {
+            text-align: center;
+            width: 100%;
+            display: block;
+        }
+    }
+
+    .NewProductPanel {
+        display: grid;
+        grid-template-columns: 35% 65%;
+        padding-top: 10px;
+        .Painel1 {
+            height: 310px;
+            border: 1px solid rgb(25, 25, 25);
+            border-radius: 7px;
+
+            .Painel1Header {
+                padding-top: 7px;
+                text-align: center;
+                p {
+                    font-size: 28px;
+                    cursor: default;
+                }
+                .ProductImgSelect {
+                    margin-top: 13%;
+                    max-width: 15 0px;
+                    max-height: 150px;
+                    border-radius: 100%;
+                    border: 1px solid rgb(0, 0, 0);
+                }
+                .ProductImgSelect:hover {
+                    cursor: pointer;
+                    border-color: rgb(195, 0, 198);
+                }
+            }
+        }
+        .Painel2 {
+            text-align: center;
+            background-color: rgb(46, 46, 46);
+            border: 1px solid rgb(25, 25, 25);
+            border-radius: 7px;
+            margin-left: 10px;
+            height: 70%;
+            max-height: 85%;
+            button {
+                height: 40px;
+            }
+            button:hover {
+                border-color: rgb(255, 0, 0);
+                color: rgb(221, 0, 0);
+            }
+
+            .Painel2Form {
+                max-height: 90%;
+                margin-top: 1%;
+                p {
+                    margin-bottom: 7px;
+                    cursor: default;
+                }
+
+                input {
+                    width: 30%;
+                    height: 25px;
+                }
+                select {
+                    color: rgb(23, 23, 23);
+                    margin-bottom: 5%;
+                    height: 30px;
+                    width: 30%;
+                    cursor: pointer;
+                }
+                select:hover {
+                    background-color: rgb(193, 193, 193);
+                }
+
+                option {
+                    background-color: black;
+                    color: rgb(255, 255, 255);
+                }
+                overflow: auto;
+            }
+        }
+        .Painel2:hover,
+        .Painel1:hover {
+            background-color: rgb(41, 41, 41);
+        }
+    }
+}

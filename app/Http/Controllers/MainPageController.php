@@ -19,7 +19,7 @@ class MainPageController extends Controller
 
     public function getProductTimeline(Product $productModel)
     {
-        $products = $productModel->take(75)->get();
+        $products = $productModel->take(75)->orderBy("id", "desc")->get();
         return $products;
     }
     public function testApp()
