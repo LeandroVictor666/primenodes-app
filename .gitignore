@@ -2,6 +2,9 @@
 /public/build
 /public/hot
 /public/storage
+/public/assets/product-images/product-*.jpg
+/public/assets/profile-images/pfp-*.jpg
+
 /storage/*.key
 
 logs

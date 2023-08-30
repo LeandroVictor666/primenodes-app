@@ -5,6 +5,7 @@ import LoginUI from "@/Pages/LoginPage/LoginUI";
 import { IsAuthenticated } from "@/Functions/AuthenticationFunctions";
 import { NewProductUI } from "@/Pages/AuthenticatedPages/Product/NewProductUI";
 import { MyAccountUI } from "@/Pages/AuthenticatedPages/MyAccount/MyAccountUI";
+import { BuyPageUI } from "@/Pages/BuyPage/BuyPageUI";
 
 const allRoutes = () => {
     return (
@@ -23,7 +24,8 @@ export const AuthRoutes = () => {
         return (
             <>
                 <Route path="/MyAccount" element={<MyAccountUI />}></Route>
-                <Route path="/product/newproduct" element={<NewProductUI/>}></Route>
+                <Route path="/product/newproduct" element={<NewProductUI />}></Route>
+                <Route path="/buy-product/:productid" element={<BuyPageUI />}></Route>
             </>
         )
 
