@@ -286,6 +286,7 @@ button:hover {
 
 .itemCard:hover {
   background-color: rgb(77, 53, 79);
+  cursor: pointer;
 }
 
 .RegisterBoxContainer {
@@ -666,6 +667,101 @@ button:hover {
 .NewProductController .NewProductPanel .Painel2:hover,
 .NewProductController .NewProductPanel .Painel1:hover {
   background-color: rgb(41, 41, 41);
+}
+
+.SearchProductUI {
+  width: 55%;
+  height: 35em;
+  background-color: rgb(84, 84, 84);
+  margin-left: 50%;
+  transform: translate(-50%);
+  margin-top: 3%;
+  border: 1px solid rgb(43, 43, 43);
+  border-radius: 6px;
+}
+.SearchProductUI .SearchProductHeader {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  justify-content: center;
+  background-color: rgb(67, 67, 67);
+  text-align: center;
+}
+.SearchProductUI .SearchProductHeader .SearchRadioDiv {
+  text-align: left;
+  padding-left: 5px;
+  width: 25%;
+  margin-top: 15px;
+  margin-left: 50%;
+  transform: translate(-50%);
+}
+.SearchProductUI .SearchProductHeader .SearchRadioDiv input[type=radio] {
+  width: 15px;
+  margin: 0px;
+  margin-left: 16px;
+}
+.SearchProductUI .SearchProductHeader input[type=text] {
+  max-width: 25%;
+}
+
+.FullProductUI {
+  margin-top: 5%;
+  background-color: rgb(68, 68, 68);
+  width: 55%;
+  height: 480px;
+  margin-left: 50%;
+  transform: translate(-50%);
+  border: 1px solid rgb(46, 46, 46);
+  border-radius: 6px;
+  padding: 5px;
+}
+.FullProductUI .FullProductHeaderUI {
+  padding-top: 10px;
+  padding-bottom: 5px;
+  background-color: rgb(36, 36, 36);
+  min-height: 45%;
+  max-height: 45%;
+  text-align: center;
+  overflow: auto;
+}
+.FullProductUI .FullProductHeaderUI .ProductImage {
+  margin-top: 5px;
+  max-width: 250px;
+  max-height: 250px;
+  border: 1px solid black;
+  border-radius: 100%;
+}
+.FullProductUI .FullProductHeaderUI .ProductImage:hover {
+  cursor: pointer;
+  max-width: 260px;
+}
+.FullProductUI .FullProductHeaderUI p {
+  margin-top: 10px;
+  font-size: 18px;
+  max-height: 59px;
+  overflow: hidden;
+}
+.FullProductUI .FullProductBodyUI {
+  padding-top: 1px;
+  margin-top: 5px;
+  background-color: rgb(45, 45, 45);
+  max-height: 46%;
+  overflow: auto;
+  text-align: center;
+  padding-bottom: 15px;
+}
+.FullProductUI .FullProductBodyUI .BigLabel {
+  margin-top: 15px;
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+.FullProductUI .FullProductBodyUI .horizontalDiv {
+  border-color: rgb(86, 86, 86);
+  width: 60%;
+}
+.FullProductUI .FullProductBodyUI .FullProductFinalBody button {
+  margin-top: 10px;
+  margin-right: 10px;
+  height: 30px;
 }
 
 /*# sourceMappingURL=styles.module.css.map */

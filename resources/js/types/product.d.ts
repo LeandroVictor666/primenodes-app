@@ -27,6 +27,6 @@ export interface Product
     state:ProductState;
     vendor_name:string;
     price:string;
-    release_date:Date;
+    release_date:string | Date;
 
 }    

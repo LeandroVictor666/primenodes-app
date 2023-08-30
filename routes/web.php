@@ -26,9 +26,11 @@ use Inertia\Inertia;
 Route::get('/', [MainPageController::class, 'render'])->name('main');
 Route::get('/Register', [RegisterController::class, 'render'])->name('register');
 Route::get('/Login', [LoginController::class, 'render'])->name('login');
-Route::get('/product/newproduct', [ProductController::class, 'newProductView']);
-
-
+Route::get('/product/newproduct', [ProductController::class, 'newProductView'])->name('newproductpage');
+Route::get("/product/searchproduct", [ProductController::class, 'searchProductView'])->name('searchproductpage');
+Route::get("/product/{id}", function(int $id, ProductController $productController){
+    return $productController->viewFullProduct($id);
+});
 /*
 |--------------------------------------------------------------------------
 | Web Authenticated Routes

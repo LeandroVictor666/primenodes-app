@@ -29,6 +29,14 @@ class ProductController extends Controller
         ]);
     }
 
+    public function searchProductView()
+    {
+        return Inertia::render("SearchProductPage/SearchProductUI", []);
+        exit();
+    }
+
+
+
     public function fireNewProductEvent(NewProductRequest $request)
     {
 
@@ -83,5 +91,29 @@ class ProductController extends Controller
             ]);
         };
         exit();
+    }
+
+    public function viewFullProduct(int $id)
+    {
+        $productData = $this->getProductById($id);
+        if ($productData === null) {
+            echo "not found.";
+            exit();
+        }
+        $secureProductData = $productData->only('id', 'name', 'description', 'category', 'state', 'vendor_name', 'price', 'release_date');
+
+        return Inertia::render('ViewFullProductPage/FullProductUI', [
+            'productData' => $secureProductData
+        ]);
+
+        exit();
+    }
+
+
+    public function getProductById(int $id)
+    {
+        $productModel = new Product();
+        $productQueryResult = $productModel->find($id);
+        return $productQueryResult;
     }
 }

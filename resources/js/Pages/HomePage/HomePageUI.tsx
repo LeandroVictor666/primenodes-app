@@ -13,7 +13,7 @@ export default function HomePageUI() {
         <>
             <div className={Styles.ItemPainelController}>
                 <p onClick={()=> {window.location.href = "/product/newproduct"}}>Add Product</p>
-                <p>Search Product</p>
+                <p onClick={()=> {window.location.href = "/product/searchproduct"}}>Search Product</p>
             </div>
             <div className={Styles.itemsContainer}>
                 {sProducts.map((product, index) => {

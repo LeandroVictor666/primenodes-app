@@ -3,8 +3,10 @@ import Styles from "../../../css/styles.module.css";
 import { Product } from "@/types/product";
 
 export default function ProductCard({ product }: { product: Product }) {
+    console.log(product);
+
     return (
-        <div className={`${Styles.itemCard}`}>
+        <div className={`${Styles.itemCard}`} onClick={()=> {window.open(`/product/${product.id}`, '_blank')}}>
             <div className={Styles.itemCardHeader}>
                 <img src={`assets/images/product-images/product-${product.id}.jpg`} className={Styles.productImage} />
                 <p>{product.name}</p>
