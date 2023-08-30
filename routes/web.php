@@ -31,6 +31,9 @@ Route::get("/product/searchproduct", [ProductController::class, 'searchProductVi
 Route::get("/product/{id}", function (int $id, ProductController $productController) {
     return $productController->viewFullProduct($id);
 });
+Route::get("/buy-product/{id}", function (int $id, ProductController $productController) {
+    return $productController->buyProductView($id);
+});
 
 
 /*

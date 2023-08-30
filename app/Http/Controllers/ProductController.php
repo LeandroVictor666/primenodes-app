@@ -146,4 +146,14 @@ class ProductController extends Controller
         };
         return $productQueryResult;
     }
+
+    public function buyProductView(int $productId)
+    {
+        $product = $this->getProductById($productId);
+        return Inertia::render('BuyPage/BuyPageUI', [
+            'productInformations' => $product
+
+        ]);
+        exit();
+    }
 }
