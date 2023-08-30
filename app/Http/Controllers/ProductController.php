@@ -100,8 +100,8 @@ class ProductController extends Controller
             echo "not found.";
             exit();
         }
-        $secureProductData = $productData->only('id', 'name', 'description', 'category', 'state', 'vendor_name', 'price', 'release_date');
 
+        $secureProductData = $productData->only('id', 'name', 'description', 'category', 'state', 'vendor_name', 'price', 'release_date');
         return Inertia::render('ViewFullProductPage/FullProductUI', [
             'productData' => $secureProductData
         ]);
@@ -114,6 +114,36 @@ class ProductController extends Controller
     {
         $productModel = new Product();
         $productQueryResult = $productModel->find($id);
+        return $productQueryResult;
+    }
+
+    public function getProductByProductName(string $productName, bool $inJson = false)
+    {
+        $productModel = new Product();
+        $productQueryResult = $productModel->select('id', 'name', 'description', 'category', 'state', 'vendor_name', 'price', 'release_date')->where("name", 'LIKE', '%' . $productName . '%')->get();
+        if ($inJson === true) {
+            $this->apiResponse([
+                'isError' => 'false',
+                'response' => 'Products Found.',
+                'Products' => $productQueryResult,
+            ]);
+            exit();
+        };
+        return $productQueryResult;
+    }
+
+    public function getProductByVendorName(string $vendorName, bool $inJson = false)
+    {
+        $productModel = new Product();
+        $productQueryResult = $productModel->select('id', 'name', 'description', 'category', 'state', 'vendor_name', 'price', 'release_date')->where("vendor_name", 'LIKE', '%' . $vendorName . '%')->get();
+        if ($inJson === true) {
+            $this->apiResponse([
+                'isError' => 'false',
+                'response' => 'Products Found.',
+                'Products' => $productQueryResult,
+            ]);
+            exit();
+        };
         return $productQueryResult;
     }
 }

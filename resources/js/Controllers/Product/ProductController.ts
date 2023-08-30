@@ -2,7 +2,10 @@ import IProductController from "@/Interface/ProductInterface/IProductController"
 import { HttpPostRequestType } from "@/types/HttpRequestType/HttpPostRequestType";
 
 import HttpPostRequest from "../HttpClient/HttpPostClient";
-import { ServerResponse } from "@/types/serverresponse";
+import { ProductServerResponse, ServerResponse } from "@/types/serverresponse";
+import HttpGetClient from "../HttpClient/HttpGetClient";
+import { HttpGetRequestType } from "@/types/HttpRequestType/HttpGetRequestType";
+import { Product } from "@/types/product";
 
 export default class ProductController implements IProductController {
     private authorizationToken: string;
@@ -124,6 +127,78 @@ export default class ProductController implements IProductController {
             .catch((error) => {
                 return Promise.reject(error);
             });
+
+        return Promise.resolve(serverResponse);
+    }
+
+    async searchProductByProductName(
+        productName: string
+    ): Promise<ProductServerResponse | undefined> {
+        if (productName.length < 3) {
+            const errorResponse: ServerResponse = {
+                isError: "true",
+                response: "The minimum number of characters to search is 3",
+                mySqlError: "",
+                token: "",
+            };
+            return Promise.reject(errorResponse);
+        }
+
+        const httpConfiguration: HttpGetRequestType = {
+            url: `/api/product/searchByName`,
+            paramsFormated: productName,
+            headers: {
+                "Content-Type": "application/json",
+            },
+        };
+        const HttpGetClientController: HttpGetClient = new HttpGetClient();
+        var serverResponse: ProductServerResponse | undefined;
+        await HttpGetClientController.fetchGet(httpConfiguration)
+            .then((response) => {
+                serverResponse = response;
+            })
+            .catch((error) => {
+                return Promise.reject(error);
+            });
+        if (serverResponse === undefined) {
+            return Promise.reject(undefined);
+        }
+
+        return Promise.resolve(serverResponse);
+    }
+
+    async searchProductByVendorName(
+        vendorName: string
+    ): Promise<ProductServerResponse | undefined> {
+        if (vendorName.length < 3) {
+            const errorResponse: ServerResponse = {
+                isError: "true",
+                response: "The minimum number of characters to search is 3",
+                mySqlError: "",
+                token: "",
+            };
+            return Promise.reject(errorResponse);
+        }
+
+        const httpConfiguration: HttpGetRequestType = {
+            url: `/api/product/searchByVendorName`,
+            paramsFormated: vendorName,
+            headers: {
+                "Content-Type": "application/json",
+            },
+        };
+        const HttpGetClientController: HttpGetClient = new HttpGetClient();
+        var serverResponse: ProductServerResponse | undefined;
+        await HttpGetClientController.fetchGet(httpConfiguration)
+            .then((response) => {
+                serverResponse = response;
+            })
+            .catch((error) => {
+                return Promise.reject(error);
+            });
+        if (serverResponse === undefined) {
+            return Promise.reject(undefined);
+        }
 
         return Promise.resolve(serverResponse);
     }

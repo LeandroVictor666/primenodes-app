@@ -36,6 +36,15 @@ Route::middleware('api')->post('/logout', function (LoginController $loginContro
     return $loginController->logout();
 });
 
+Route::middleware('api')->get('/product/searchByName/{productname}', function (string $productname, ProductController $productController){
+    return $productController->getProductByProductName($productname, true);
+});
+//searchByVendorName
+Route::middleware('api')->get('/product/searchByVendorName/{vendorName}', function (string $vendorName, ProductController $productController){
+    return $productController->getProductByVendorName($vendorName, true);
+});
+
+
 Route::middleware('auth:sanctum')->post('/updateUsername', function (MyAccountController $myAccountController, UpdateAccountRequest $request, Account $accountModel){
     return $myAccountController->changeUsername($request, $accountModel);
 });
