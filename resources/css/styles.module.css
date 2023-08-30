@@ -69,6 +69,7 @@ header .firstSection p:hover {
   color: #cbcbcb;
 }
 header .middleSection {
+  display: flex;
   margin-left: 36%;
   transform: translate(-50%);
   padding-top: 0.6em;
@@ -105,6 +106,51 @@ header .finalSection p:hover {
   cursor: pointer;
 }
 
+@media screen and (max-width: 961px) {
+  .middleSection {
+    margin-left: 30% !important;
+  }
+}
+@media screen and (max-width: 858px) {
+  .middleSection {
+    margin-left: 20% !important;
+  }
+}
+@media screen and (max-width: 708px) {
+  .middleSection {
+    margin-left: 10% !important;
+  }
+}
+@media screen and (max-width: 606px) {
+  .middleSection {
+    margin-left: 20% !important;
+  }
+  .middleSection .icons {
+    font-size: 1.8em !important;
+  }
+  .finalSection {
+    margin-left: 5% !important;
+  }
+  .finalSection p {
+    font-size: 12px !important;
+  }
+}
+@media screen and (max-width: 470px) {
+  .middleSection {
+    margin-left: 10% !important;
+  }
+  .finalSection {
+    margin-left: 0% !important;
+  }
+}
+@media screen and (max-width: 380px) {
+  .middleSection {
+    display: none !important;
+  }
+  .finalSection {
+    margin-left: 15% !important;
+  }
+}
 * {
   color: white;
   transition: 0.5s;
@@ -216,6 +262,12 @@ button:hover {
   flex-wrap: wrap;
 }
 
+@media screen and (max-width: 681px) {
+  .itemsContainer {
+    justify-content: center !important;
+    max-width: 70% !important;
+  }
+}
 .itemCard {
   background-color: rgb(56, 56, 56);
   border: 1px solid black;
@@ -289,6 +341,11 @@ button:hover {
   cursor: pointer;
 }
 
+@media screen and (max-width: 681px) {
+  .itemCard {
+    width: 25.6rem;
+  }
+}
 .RegisterBoxContainer {
   background-color: #3c3c3c;
   width: 54%;
@@ -669,6 +726,39 @@ button:hover {
   background-color: rgb(41, 41, 41);
 }
 
+@media screen and (max-width: 980px) {
+  .NewProductController {
+    width: 53em !important;
+  }
+}
+@media screen and (max-width: 870px) {
+  .NewProductController {
+    width: 45em !important;
+  }
+}
+@media screen and (max-width: 741px) {
+  .NewProductController {
+    width: 40em !important;
+  }
+}
+@media screen and (max-width: 625px) {
+  .NewProductController {
+    width: 25em !important;
+    height: auto !important;
+    padding-bottom: 10px !important;
+  }
+  .NewProductController .NewProductPanel {
+    display: block;
+  }
+  .NewProductController .NewProductPanel .Painel1 {
+    height: 270px !important;
+    margin-bottom: 10px !important;
+  }
+  .NewProductController .NewProductPanel .Painel2 {
+    width: 97% !important;
+    height: 100% !important;
+  }
+}
 .SearchProductUI {
   width: 95%;
   height: 45em;

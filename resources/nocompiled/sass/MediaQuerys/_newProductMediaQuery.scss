@@ -1,0 +1,36 @@
+@media screen and (max-width: 980px) {
+    .NewProductController {
+        width: 53em !important;
+    }
+}
+@media screen and (max-width: 870px) {
+    .NewProductController {
+        width: 45em !important;
+    }
+}
+@media screen and (max-width: 741px) {
+    .NewProductController {
+        width: 40em !important;
+    }
+}
+@media screen and (max-width: 625px) {
+    .NewProductController {
+        width: 25em !important;
+        height: auto !important;
+        padding-bottom: 10px !important;
+
+        .NewProductPanel {
+            display: block;
+
+            .Painel1 {
+                height: 270px !important;
+                margin-bottom: 10px !important;
+            }
+
+            .Painel2{
+                width: 97% !important;
+                height: 100% !important;
+            }
+        }
+    }
+}

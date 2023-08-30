@@ -18,6 +18,7 @@ header {
         color: #cbcbcb;
     }
     .middleSection {
+        display: flex;
         margin-left: 36%;
         transform: translate(-50%);
         padding-top: 0.6em;
@@ -54,3 +55,5 @@ header {
         cursor: pointer;
     }
 }
+
+@import 'MediaQuerys/headerMediaQuery';
