@@ -165,7 +165,7 @@ export const MyAccountUI = () => {
             <ModalFormUI />
             <div className={Styles.MyAccountContainer}>
                 <div className={Styles.MyAccountHeader}>
-                    <img className={Styles.MyAccountPfp} src="https://avatars.githubusercontent.com/u/141360333?v=4" alt="" />
+                    <img className={Styles.MyAccountPfp} src="../assets/images/profile-images/new-person.jpg" alt="" />
                     <p>{userAccount.full_name}</p>
                 </div>
                 <div className={Styles.MyAccountInformationsContainer}>

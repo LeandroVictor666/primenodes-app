@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Barlow:wght@100&family=Inter:wght@200&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@100&family=Inter:wght@200&family=Roboto+Condensed:ital,wght@1,300&display=swap");
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -82,8 +83,9 @@ header .middleSection .icons {
 }
 header .middleSection .icons:hover {
   margin-left: 0.8em;
-  font-size: 2.8em;
-  fill: #b0b0b0;
+  font-size: 2.89em;
+  fill: rgba(176, 176, 176, 0.6431372549);
+  cursor: pointer;
 }
 header .finalSection {
   display: flex;
@@ -106,6 +108,11 @@ header .finalSection p:hover {
 * {
   color: white;
   transition: 0.5s;
+}
+
+::selection {
+  background-color: purple;
+  color: rgb(16, 16, 16);
 }
 
 body {
@@ -132,6 +139,67 @@ p {
   margin-right: 0.9em;
 }
 
+input {
+  display: block;
+}
+
+input {
+  color: black;
+  width: 80%;
+  height: 2.3em;
+  margin-bottom: 20px;
+  margin-left: 50%;
+  transform: translate(-50%);
+}
+
+input[type=submit] {
+  height: 2.5em;
+  width: 50%;
+  border: 1.4px solid rgb(122, 122, 122);
+}
+
+input:hover {
+  cursor: pointer;
+  background-color: #c9c9c9;
+}
+
+input[type=submit]:active {
+  background-color: rgb(43, 43, 43);
+  color: white;
+}
+
+button {
+  background-color: transparent;
+  min-width: 70px;
+  min-height: 25px;
+  border: 1px solid rgb(181, 181, 181);
+  border-radius: 6px;
+}
+
+button:hover {
+  cursor: pointer;
+  border: 1px solid black;
+  color: black;
+}
+
+.ItemPainelController {
+  display: flex;
+  padding: 25px;
+  justify-content: center;
+  background-color: rgb(69, 69, 69);
+}
+.ItemPainelController p {
+  border: 1px solid rgb(35, 35, 35);
+  border-radius: 8px;
+  padding: 7px;
+  margin-left: 8px;
+}
+.ItemPainelController p:hover {
+  cursor: pointer;
+  border: 1px solid rgb(0, 0, 0);
+  color: rgba(0, 0, 0, 0.6666666667);
+}
+
 .itemsContainer {
   display: flex;
   margin-top: 4%;
@@ -146,19 +214,6 @@ p {
   max-width: 65%;
   overflow-y: auto;
   flex-wrap: wrap;
-}
-
-.productImage {
-  width: 120px !important;
-  border: 2px solid rgb(170, 0, 255);
-  border-radius: 45%;
-  float: left;
-  margin-right: 10px;
-}
-
-.productImage:hover {
-  width: 125px;
-  cursor: pointer;
 }
 
 .itemCard {
@@ -178,6 +233,17 @@ p {
   padding-left: 7px;
   width: 100%;
   height: 40%;
+}
+.itemCard .itemCardHeader .productImage {
+  width: 120px;
+  border: 2px solid rgb(170, 0, 255);
+  border-radius: 45%;
+  float: left;
+  margin-right: 10px;
+}
+.itemCard .itemCardHeader .productImage:hover {
+  width: 125px;
+  cursor: pointer;
 }
 .itemCard .horizontalLine {
   margin-top: 10%;
@@ -203,9 +269,562 @@ p {
 .itemCard .itemCardInformationContainer strong :hover {
   font-size: 16px;
 }
+.itemCard .itemCardControls {
+  margin-top: 15px;
+  padding: 5px;
+  border-top: 1px solid rgb(39, 39, 39);
+  height: 5em;
+}
+.itemCard .itemCardControls button {
+  margin-top: 0.5em;
+  margin-right: 0.4em;
+}
+.itemCard .itemCardControls button:active {
+  color: rgb(46, 46, 46);
+  border: 1px solid rgb(46, 46, 46);
+}
 
 .itemCard:hover {
   background-color: rgb(77, 53, 79);
+  cursor: pointer;
+}
+
+.RegisterBoxContainer {
+  background-color: #3c3c3c;
+  width: 54%;
+  height: 525px;
+  margin-left: 50%;
+  margin-top: 3.4em;
+  transform: translate(-50%);
+  border: 1px solid rgb(112, 112, 112);
+  border-radius: 6px;
+}
+.RegisterBoxContainer .Header {
+  background-color: rgb(32, 32, 32);
+  border: 1px solid #575757;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  height: 3.6em;
+  justify-content: center;
+}
+.RegisterBoxContainer .Header p {
+  font-size: 28px;
+  cursor: default;
+}
+.RegisterBoxContainer .Header:hover {
+  background-color: rgb(37, 37, 37);
+}
+.RegisterBoxContainer .formContainer {
+  background-color: rgb(37, 37, 37);
+  display: block;
+  justify-content: center;
+  width: 70%;
+  margin-left: 50%;
+  margin-top: 1.5%;
+  padding: 30px;
+  border-radius: 6px;
+  border: 1px solid rgb(87, 87, 87);
+  transform: translate(-50%);
+}
+.RegisterBoxContainer .formContainer p {
+  margin-left: 33%;
+  margin-bottom: 3%;
+}
+
+.LoginFormDiv {
+  padding: 30px;
+  margin-top: 8%;
+  width: 35%;
+  height: 255px;
+  margin-left: 50%;
+  transform: translate(-50%);
+  background-color: #232323;
+  border: 1px solid #4e4e4e;
+  border-radius: 7px;
+}
+.LoginFormDiv .Header {
+  margin-bottom: 25px;
+  display: flex;
+  height: 2em;
+  justify-content: center;
+  align-items: center;
+}
+.LoginFormDiv .Header p {
+  cursor: default;
+  font-size: 24px;
+}
+
+.ModalMain {
+  width: 40%;
+  height: 380px;
+  margin-top: 10%;
+  margin-left: 50%;
+  transform: translate(-50%);
+  border: 1px solid rgb(150, 150, 150);
+  border-radius: 6px;
+  background-color: rgb(255, 255, 255);
+  position: absolute;
+  z-index: 9999;
+}
+.ModalMain header {
+  border-radius: 4.7px;
+  justify-content: center;
+  align-items: center;
+}
+.ModalMain header p {
+  font-size: 24px;
+}
+.ModalMain .ModalBody {
+  display: flex;
+  height: 70%;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.ModalMain .ModalBody p {
+  color: black;
+  font-size: 18px;
+}
+.ModalMain .ModalBody .ModalResponse p {
+  font-size: 21px;
+}
+.ModalMain .ModalBody .ModalNotification {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  border: 1px solid rgb(45, 45, 45);
+  border-radius: 4px;
+  width: 100%;
+  height: 35px;
+}
+.ModalMain .ModalBody .ModalNotification p {
+  color: white;
+  font-size: 22px;
+}
+.ModalMain .ModalBody .ModalSuccess {
+  background-color: rgba(44, 214, 35, 0.897);
+  box-shadow: 0px 3px 18px rgba(44, 214, 35, 0.897);
+}
+.ModalMain .ModalBody .ModalFailure {
+  background-color: rgba(216, 10, 10, 0.897);
+  box-shadow: 0px 3px 18px rgba(216, 10, 10, 0.897);
+}
+.ModalMain .ModalBody .ModalAlert {
+  background-color: rgb(237, 241, 0);
+  box-shadow: 0px 3px 18px rgb(237, 241, 0);
+}
+
+.ModalFormUI {
+  position: absolute;
+  background-color: white;
+  margin-left: 50%;
+  transform: translate(-50%);
+  margin-top: 7%;
+  z-index: 9999;
+  width: 60%;
+  height: 35%;
+  border: 1.4px solid black;
+  border-radius: 7px;
+}
+.ModalFormUI p {
+  color: black;
+}
+.ModalFormUI .ModalFormHeader {
+  background-color: #696969;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid purple;
+  border-end-end-radius: 30px;
+  margin-bottom: 10px;
+}
+.ModalFormUI .ModalFormHeader p {
+  color: #000000;
+  font-size: 34px;
+}
+.ModalFormUI .ModalFormHeader p:hover {
+  cursor: default;
+  font-size: 36px;
+}
+.ModalFormUI .ModalFormHeader:hover {
+  background-color: #7b7b7b;
+}
+.ModalFormUI .ModalFormDivContent {
+  display: block;
+  background-color: #858585;
+  justify-content: center;
+  align-items: center;
+  margin-left: 50%;
+  transform: translate(-50%);
+  width: 90%;
+  height: 60%;
+  border: 1px solid #4b4b4b;
+  border-radius: 7px;
+}
+.ModalFormUI .ModalFormDivContent input {
+  background-color: rgb(74, 74, 74);
+  border: 1px solid rgb(188, 188, 188);
+  text-align: center;
+  width: 35%;
+  margin-top: 2%;
+}
+.ModalFormUI .ModalFormDivContent input:hover {
+  border: 1px solid white;
+  background-color: rgb(156, 156, 156);
+}
+.ModalFormUI .ModalFormDivContent input:active {
+  background-color: rgb(38, 38, 38);
+}
+.ModalFormUI .ModalFormDivContent button {
+  background-color: rgb(74, 74, 74);
+  border: 1px solid rgb(188, 188, 188);
+  margin-left: 50%;
+  transform: translate(-50%);
+  width: 30%;
+  height: 30px;
+}
+.ModalFormUI .ModalFormDivContent button:hover {
+  color: black;
+  background-color: rgb(156, 156, 156);
+  border: 1px solid black;
+  cursor: pointer;
+}
+.ModalFormUI .ModalFormDivContent button:active {
+  width: 32%;
+  background-color: rgb(38, 38, 38);
+}
+
+.MyAccountContainer {
+  cursor: default;
+  display: block;
+  margin-top: 5%;
+  margin-left: 50%;
+  width: 60%;
+  height: 460px;
+  padding: 10px;
+  transform: translate(-50%);
+  background-color: rgb(77, 77, 77);
+  flex-wrap: wrap;
+}
+.MyAccountContainer p {
+  color: black;
+}
+.MyAccountContainer .MyAccountHeader {
+  transition: 1s;
+  padding-top: 10px;
+  margin-bottom: 10px;
+  height: 200px;
+  background-color: rgb(118, 118, 118);
+  text-align: center;
+  border: 1px solid rgb(190, 190, 190);
+  border-radius: 15px;
+}
+.MyAccountContainer .MyAccountHeader p {
+  font-size: 32px;
+}
+.MyAccountContainer .MyAccountHeader p:hover {
+  font-size: 34px;
+}
+.MyAccountContainer .MyAccountHeader .MyAccountPfp {
+  max-width: 140px;
+  border: 1px solid rgb(206, 206, 206);
+  border-radius: 100%;
+}
+.MyAccountContainer .MyAccountHeader .MyAccountPfp:hover {
+  max-width: 155px;
+}
+.MyAccountContainer .MyAccountHeader:hover {
+  background-color: rgb(158, 158, 158);
+}
+.MyAccountContainer .MyAccountInformationsContainer {
+  transition: 1s;
+  border: 1px solid rgb(198, 198, 198);
+  border-radius: 15px;
+  padding: 8px;
+  padding-top: 50px;
+  height: 35%;
+  background-color: rgb(154, 154, 154);
+  text-align: center;
+}
+.MyAccountContainer .MyAccountInformationsContainer p {
+  background-color: rgb(134, 134, 134);
+  border-radius: 5px;
+  margin-top: 10px;
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 19px;
+}
+.MyAccountContainer .MyAccountInformationsContainer p:hover {
+  background-color: rgb(110, 109, 109);
+  font-size: 20px;
+  cursor: pointer;
+}
+.MyAccountContainer .MyAccountInformationsContainer:hover {
+  background-color: rgb(197, 197, 197);
+}
+.MyAccountContainer .MyAccountContainer::selection {
+  background-color: black;
+}
+
+.NewProductController {
+  background-color: rgb(46, 46, 46);
+  margin-top: 2.5em;
+  margin-left: 50%;
+  transform: translate(-50%);
+  width: 60em;
+  height: 26em;
+  border: 1px solid black;
+  border-radius: 9px;
+  padding: 5px;
+}
+.NewProductController .NewProductHeader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(59, 59, 59);
+  height: 5.5em;
+  flex-wrap: wrap;
+}
+.NewProductController .NewProductHeader p {
+  text-align: center;
+  width: 100%;
+  display: block;
+}
+.NewProductController .NewProductPanel {
+  display: grid;
+  grid-template-columns: 35% 65%;
+  padding-top: 10px;
+}
+.NewProductController .NewProductPanel .Painel1 {
+  height: 310px;
+  border: 1px solid rgb(25, 25, 25);
+  border-radius: 7px;
+}
+.NewProductController .NewProductPanel .Painel1 .Painel1Header {
+  padding-top: 7px;
+  text-align: center;
+}
+.NewProductController .NewProductPanel .Painel1 .Painel1Header p {
+  font-size: 28px;
+  cursor: default;
+}
+.NewProductController .NewProductPanel .Painel1 .Painel1Header .ProductImgSelect {
+  margin-top: 13%;
+  max-width: 15 0px;
+  max-height: 150px;
+  border-radius: 100%;
+  border: 1px solid rgb(0, 0, 0);
+}
+.NewProductController .NewProductPanel .Painel1 .Painel1Header .ProductImgSelect:hover {
+  cursor: pointer;
+  border-color: rgb(195, 0, 198);
+  filter: blur(1.4px);
+}
+.NewProductController .NewProductPanel .Painel2 {
+  text-align: center;
+  background-color: rgb(46, 46, 46);
+  border: 1px solid rgb(25, 25, 25);
+  border-radius: 7px;
+  margin-left: 10px;
+  height: 70%;
+  max-height: 85%;
+}
+.NewProductController .NewProductPanel .Painel2 button {
+  height: 40px;
+}
+.NewProductController .NewProductPanel .Painel2 button:hover {
+  border-color: rgb(255, 0, 0);
+  color: rgb(221, 0, 0);
+}
+.NewProductController .NewProductPanel .Painel2 .Painel2Form {
+  max-height: 90%;
+  margin-top: 1%;
+  overflow: auto;
+}
+.NewProductController .NewProductPanel .Painel2 .Painel2Form p {
+  margin-bottom: 7px;
+  cursor: default;
+}
+.NewProductController .NewProductPanel .Painel2 .Painel2Form input {
+  width: 30%;
+  height: 25px;
+}
+.NewProductController .NewProductPanel .Painel2 .Painel2Form select {
+  color: rgb(23, 23, 23);
+  margin-bottom: 5%;
+  height: 30px;
+  width: 30%;
+  cursor: pointer;
+}
+.NewProductController .NewProductPanel .Painel2 .Painel2Form select:hover {
+  background-color: rgb(193, 193, 193);
+}
+.NewProductController .NewProductPanel .Painel2 .Painel2Form option {
+  background-color: black;
+  color: rgb(255, 255, 255);
+}
+.NewProductController .NewProductPanel .Painel2:hover,
+.NewProductController .NewProductPanel .Painel1:hover {
+  background-color: rgb(41, 41, 41);
+}
+
+.SearchProductUI {
+  width: 95%;
+  height: 45em;
+  background-color: rgb(84, 84, 84);
+  margin-left: 50%;
+  transform: translate(-50%);
+  margin-top: 3%;
+  border: 1px solid rgb(43, 43, 43);
+  border-radius: 6px;
+}
+.SearchProductUI .SearchProductHeader {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  justify-content: center;
+  background-color: rgb(67, 67, 67);
+  text-align: center;
+  height: 30%;
+  border-bottom: 1px solid rgb(121, 0, 121);
+}
+.SearchProductUI .SearchProductHeader .SearchRadioDiv {
+  text-align: left;
+  padding-left: 5px;
+  width: 25%;
+  margin-top: 15px;
+  margin-left: 50%;
+  transform: translate(-50%);
+}
+.SearchProductUI .SearchProductHeader .SearchRadioDiv input[type=radio] {
+  width: 15px;
+  margin: 0px;
+  margin-left: 16px;
+}
+.SearchProductUI .SearchProductHeader input[type=text] {
+  max-width: 25%;
+}
+.SearchProductUI .SearchProductResults {
+  background-color: rgb(89, 89, 89);
+  border-radius: 4px;
+  width: 100%;
+  height: 67%;
+  max-width: 100%;
+  display: flex;
+  overflow: auto;
+  justify-content: left;
+}
+.SearchProductUI .SearchProductResults p {
+  color: black;
+}
+.SearchProductUI .SearchProductResults .ProductCard {
+  background-color: rgb(124, 124, 124);
+  border: 1px solid rgb(41, 41, 41);
+  border-radius: 7px;
+  margin: 10px;
+  margin-left: 5px;
+  min-width: 30%;
+  max-width: 30%;
+  min-height: 93%;
+  max-height: 93%;
+}
+.SearchProductUI .SearchProductResults .ProductCard .ProductCardHeader {
+  text-align: center;
+  border-bottom: 1px solid black;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  height: 30%;
+}
+.SearchProductUI .SearchProductResults .ProductCard .ProductCardHeader .ProductImage {
+  max-width: 130px;
+  min-width: 130px;
+  max-height: 130px;
+  min-height: 130px;
+  border: 1px solid rgb(19, 19, 19);
+  border-radius: 100%;
+}
+.SearchProductUI .SearchProductResults .ProductCard .ProductCardHeader .ProductImage:hover {
+  max-width: 140px;
+}
+.SearchProductUI .SearchProductResults .ProductCard .ProductCardBody {
+  margin-top: 5px;
+  text-align: center;
+  max-width: 100%;
+  min-width: 100%;
+  min-height: 47%;
+  max-height: 47%;
+}
+.SearchProductUI .SearchProductResults .ProductCard .ProductCardBody .BigLabel {
+  font-size: 1.5em;
+  margin-top: 15px;
+}
+.SearchProductUI .SearchProductResults .ProductCard .ProductCardBody p:not(.BigLabel):hover {
+  font-size: 18px;
+}
+.SearchProductUI .SearchProductResults .ProductCard:hover {
+  background-color: rgb(97, 97, 97);
+  cursor: pointer;
+}
+
+.FullProductUI {
+  margin-top: 5%;
+  background-color: rgb(68, 68, 68);
+  width: 55%;
+  height: 480px;
+  margin-left: 50%;
+  transform: translate(-50%);
+  border: 1px solid rgb(46, 46, 46);
+  border-radius: 6px;
+  padding: 5px;
+}
+.FullProductUI .FullProductHeaderUI {
+  padding-top: 10px;
+  padding-bottom: 5px;
+  background-color: rgb(36, 36, 36);
+  min-height: 45%;
+  max-height: 45%;
+  text-align: center;
+  overflow: auto;
+}
+.FullProductUI .FullProductHeaderUI .ProductImage {
+  margin-top: 5px;
+  max-width: 250px;
+  max-height: 250px;
+  border: 1px solid black;
+  border-radius: 100%;
+}
+.FullProductUI .FullProductHeaderUI .ProductImage:hover {
+  cursor: pointer;
+  max-width: 260px;
+}
+.FullProductUI .FullProductHeaderUI p {
+  margin-top: 10px;
+  font-size: 18px;
+  max-height: 59px;
+  overflow: hidden;
+}
+.FullProductUI .FullProductBodyUI {
+  padding-top: 1px;
+  margin-top: 5px;
+  background-color: rgb(45, 45, 45);
+  max-height: 46%;
+  overflow: auto;
+  text-align: center;
+  padding-bottom: 15px;
+}
+.FullProductUI .FullProductBodyUI .BigLabel {
+  margin-top: 15px;
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+.FullProductUI .FullProductBodyUI .horizontalDiv {
+  border-color: rgb(86, 86, 86);
+  width: 60%;
+}
+.FullProductUI .FullProductBodyUI .FullProductFinalBody button {
+  margin-top: 10px;
+  margin-right: 10px;
+  height: 30px;
 }
 
 /*# sourceMappingURL=style.css.map */
