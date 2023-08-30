@@ -28,24 +28,24 @@ export const BuyPageUI = () => {
                 </div>
                 <div className={Styles.MainDetailsBody}>
                     <p>Nome Completo</p>
-                    <input type="text" placeholder="ex: Leandro Victor Da Silva.."/>
+                    <input type="text" placeholder="ex: Leandro Victor Da Silva.." />
 
                     <p>Email</p>
-                    <input type="text" placeholder="ex: SeuEmail@dominio.com"/>
+                    <input type="text" placeholder="ex: SeuEmail@dominio.com" />
 
                     <p>CPF</p>
-                    <input type="text" placeholder="formato: xxx.xxx.xxx-xx"/>
+                    <input type="text" placeholder="formato: xxx.xxx.xxx-xx" />
 
                     <p>Numero Do Cartão</p>
                     <input type="text" placeholder="Pelo amor de cristo, não coloque nada real aqui" style={{ width: '95%' }} />
 
                     <p>CVV</p>
-                    <input type="text" style={{ width: '30%' }} placeholder="xxx"/>
+                    <input type="text" style={{ width: '30%' }} placeholder="xxx" />
 
                     <p>Validade</p>
                     <input type="date" style={{ width: '40%', marginTop: '10px' }} />
 
-                    <p style={{marginBottom:'5%'}}>Total: {productData.price}R$</p>
+                    <p style={{ marginBottom: '5%' }}>Total: {productData.price}R$</p>
                 </div>
             </div>
 
